@@ -67,9 +67,10 @@ export function AppSidebar({ user }: { user: User | undefined }) {
                   setOpenMobile(false);
                 }}
               >
-                <span className="cursor-pointer rounded-md px-2 font-semibold text-lg hover:bg-muted">
+                <img src="/logo.svg" alt="logo" style={{width: "150px"}} />
+                {/* <span className="cursor-pointer rounded-md px-2 font-semibold text-lg hover:bg-muted">
                   Chatbot
-                </span>
+                </span> */}
               </Link>
               <div className="flex flex-row gap-1">
                 {user && (
