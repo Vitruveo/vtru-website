@@ -193,19 +193,14 @@ export async function POST(request: Request) {
           system: systemPrompt({ selectedChatModel, requestHints }),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
-          activeTools:
-            selectedChatModel === "chat-model-reasoning"
-              ? []
-              : [
-                  ...Object.keys(vitruveo),
+          activeTools: [
                   "getWeather",
                   "createDocument",
                   "updateDocument",
                   "requestSuggestions",
-                ] as Array<'getWeather' | 'createDocument' | 'updateDocument' | 'requestSuggestions'>,
+                ],
           experimental_transform: smoothStream({ chunking: "word" }),
           tools: {
-            ...vitruveo,
             getWeather,
             createDocument: createDocument({ session, dataStream }),
             updateDocument: updateDocument({ session, dataStream }),
