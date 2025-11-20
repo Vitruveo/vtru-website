@@ -180,7 +180,7 @@ export async function POST(request: Request) {
       },
     });
     const vitruveo  = await mcpClient.tools();
-
+    console.log(vitruveo);
     const streamId = generateUUID();
     await createStreamId({ streamId, chatId: id });
 
