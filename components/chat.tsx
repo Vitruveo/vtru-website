@@ -96,12 +96,12 @@ export function Chat({
         };
       },
     }),
-    onData: (dataPart) => {
-      setDataStream((ds) => (ds ? [...ds, dataPart] : []));
-      if (dataPart.type === "data-usage") {
-        setUsage(dataPart.data);
-      }
-    },
+    // onData: (dataPart) => {
+    //   setDataStream((ds) => (ds ? [...ds, dataPart] : []));
+    //   if (dataPart.type === "data-usage") {
+    //     setUsage(dataPart.data);
+    //   }
+    // },
     onFinish: () => {
       mutate(unstable_serialize(getChatHistoryPaginationKey));
     },
