@@ -87,13 +87,13 @@ function InfoRow({
         <span className="min-w-[4ch] text-right">
           {tokens === undefined ? "—" : tokens.toLocaleString()}
         </span>
-        {costText !== undefined &&
+        {/* {costText !== undefined &&
           costText !== null &&
           !Number.isNaN(Number.parseFloat(costText)) && (
             <span className="text-muted-foreground">
               ${Number.parseFloat(costText).toFixed(6)}
             </span>
-          )}
+          )} */}
       </div>
     </div>
   );
