@@ -44,6 +44,7 @@ import type { AppUsage } from "@/lib/usage";
 import { convertToUIMessages, generateUUID } from "@/lib/utils";
 import { generateTitleFromUserMessage } from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
+import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp';
 
 export const maxDuration = 60;
 
@@ -172,6 +173,14 @@ export async function POST(request: Request) {
       ],
     });
 
+    const mcp = await StreamableHTTPClientTransport({
+      transport: {
+        type: 'http',
+        url: 'https://vtru-chat.vercel.app/mcp',
+      },
+    });
+    const vitruveo = await mcp.tools();
+
     const streamId = generateUUID();
     await createStreamId({ streamId, chatId: id });
 
@@ -188,6 +197,7 @@ export async function POST(request: Request) {
             selectedChatModel === "chat-model-reasoning"
               ? []
               : [
+                  "vitruveo",
                   "getWeather",
                   "createDocument",
                   "updateDocument",
@@ -195,6 +205,7 @@ export async function POST(request: Request) {
                 ],
           experimental_transform: smoothStream({ chunking: "word" }),
           tools: {
+            vitruveo,
             getWeather,
             createDocument: createDocument({ session, dataStream }),
             updateDocument: updateDocument({ session, dataStream }),
