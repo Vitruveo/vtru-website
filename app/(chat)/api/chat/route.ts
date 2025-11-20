@@ -210,7 +210,7 @@ export async function POST(request: Request) {
           },
           onFinish: async ({ usage }) => {
             try {
-              mcpClient.close();
+              await mcpClient.close();
               const providers = await getTokenlensCatalog();
               const modelId =
                 myProvider.languageModel(selectedChatModel).modelId;
