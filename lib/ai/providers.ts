@@ -38,13 +38,13 @@ export const myProvider = isTestEnvironment
     // });
     customProvider({
       languageModels: {
-        "chat-model": gateway.languageModel("anthropic/claude-sonnet-4"),
+        "chat-model": gateway.languageModel("anthropic/claude-haiku-4.5"),
         "chat-model-reasoning": wrapLanguageModel({
-          model: gateway.languageModel("anthropic/claude-sonnet-4"),
+          model: gateway.languageModel("anthropic/claude-haiku-4.5"),
           middleware: extractReasoningMiddleware({ tagName: "think" }),
         }),
-        "title-model": gateway.languageModel("anthropic/claude-sonnet-4"),
-        "artifact-model": gateway.languageModel("anthropic/claude-sonnet-4"),
+        "title-model": gateway.languageModel("anthropic/claude-haiku-4.5"),
+        "artifact-model": gateway.languageModel("anthropic/claude-haiku-4.5"),
       },
     // customProvider({
     //   languageModels: {
