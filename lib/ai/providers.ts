@@ -1,5 +1,5 @@
 import { gateway } from "@ai-sdk/gateway";
-import { google } from "@ai-sdk/google";
+//import { google } from "@ai-sdk/google";
 import {
   customProvider,
   extractReasoningMiddleware,
@@ -38,13 +38,23 @@ export const myProvider = isTestEnvironment
     // });
     customProvider({
       languageModels: {
-      // *** Use the cost-effective model and define the tool ***
-      "chat-model": google("gemini-2.5-flash-lite"), // Use the Lite model for cost-saving
-      "chat-model-reasoning": wrapLanguageModel({
-        model: google("gemini-2.5-flash-lite"), // Use same model for simple reasoning
-        middleware: extractReasoningMiddleware({ tagName: "think" }),
-      }),
-      "title-model": google("gemini-2.5-flash-lite"),
-      "artifact-model": google("gemini-2.5-flash-lite"),
-    },
+        "chat-model": gateway.languageModel("anthropic/claude-sonnet-4"),
+        "chat-model-reasoning": wrapLanguageModel({
+          model: gateway.languageModel("anthropic/claude-sonnet-4"),
+          middleware: extractReasoningMiddleware({ tagName: "think" }),
+        }),
+        "title-model": gateway.languageModel("anthropic/claude-sonnet-4"),
+        "artifact-model": gateway.languageModel("anthropic/claude-sonnet-4"),
+      },
+    // customProvider({
+    //   languageModels: {
+    //   // *** Use the cost-effective model and define the tool ***
+    //   "chat-model": google("gemini-2.5-anthropic/claude-sonnet-4-lite"), // Use the Lite model for cost-saving
+    //   "chat-model-reasoning": wrapLanguageModel({
+    //     model: google("gemini-2.5-flash-lite"), // Use same model for simple reasoning
+    //     middleware: extractReasoningMiddleware({ tagName: "think" }),
+    //   }),
+    //   "title-model": google("gemini-2.5-flash-lite"),
+    //   "artifact-model": google("gemini-2.5-flash-lite"),
+    // },
   });

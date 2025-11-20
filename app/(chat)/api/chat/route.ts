@@ -122,9 +122,9 @@ export async function POST(request: Request) {
       differenceInHours: 24,
     });
 
-    if (messageCount > entitlementsByUserType[userType].maxMessagesPerDay) {
-      return new ChatSDKError("rate_limit:chat").toResponse();
-    }
+    // if (messageCount > entitlementsByUserType[userType].maxMessagesPerDay) {
+    //   return new ChatSDKError("rate_limit:chat").toResponse();
+    // }
 
     const chat = await getChatById({ id });
     let messagesFromDb: DBMessage[] = [];
@@ -180,7 +180,7 @@ export async function POST(request: Request) {
       },
     });
     const vitruveo  = await mcpClient.tools();
-    console.log(vitruveo);
+  
     const streamId = generateUUID();
     await createStreamId({ streamId, chatId: id });
 

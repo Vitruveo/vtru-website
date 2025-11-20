@@ -1,5 +1,4 @@
 import { createMcpHandler } from "mcp-handler";
-import { google } from "@ai-sdk/google"; // Gemini provider
 
 import { registerEVMResources } from "../../lib/mcp/resources.ts";
 import { registerEVMTools } from "../../lib/mcp/tools.ts";
@@ -15,12 +14,11 @@ const handler = createMcpHandler(
     registerEVMTools(server);
     registerEVMPrompts(server);
 
-    console.error("Vitruveo MCP Server initialized (Next.js + mcp-handler)");
+    console.error("Vitruveo MCP Server initialized");
   },
   {},
   {
     // Handler options
-    provider: google("gemini-2.5-flash-lite"),
     basePath: "",
     verboseLogs: true,
   }
