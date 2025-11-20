@@ -10,8 +10,6 @@ export const runtime = "nodejs";
 
 // Initialize MCP handler
 const handler = createMcpHandler(
-  google("gemini-2.5-flash-lite"),
-
   (server) => {
     registerEVMResources(server);
     registerEVMTools(server);
@@ -19,15 +17,14 @@ const handler = createMcpHandler(
 
     console.error("Vitruveo MCP Server initialized (Next.js + mcp-handler)");
   },
-  {
-    // Optional server options
-    // serverMetadata: { name: "vitruveo-evm", version: "1.0.0" },
-  },
+  {},
   {
     // Handler options
+    provider: google("gemini-2.5-flash-lite"),
     basePath: "",
     verboseLogs: true,
   }
 );
+
 
 export { handler as GET, handler as POST, handler as DELETE };
