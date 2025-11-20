@@ -9,41 +9,10 @@ import type { Address, Hash } from "viem";
  * @param server The MCP server instance
  */
 export function registerEVMResources(server: McpServer) {
-  // Get EVM info for a specific network
-  server.resource(
-    "chain_info_by_network", 
-    new ResourceTemplate("evm://{network}/chain", { list: undefined }),
-    async (uri, params) => {
-      try {
-        const chainId = await services.getChainId();
-        const blockNumber = await services.getBlockNumber();
-        const rpcUrl = getRpcUrl();
-        
-        return {
-          contents: [{
-            uri: uri.href,
-            text: JSON.stringify({
-              DEFAULT_NETWORK,
-              chainId,
-              blockNumber: blockNumber.toString(),
-              rpcUrl
-            }, null, 2)
-          }]
-        };
-      } catch (error) {
-        return {
-          contents: [{
-            uri: uri.href,
-            text: `Error fetching chain info: ${error instanceof Error ? error.message : String(error)}`
-          }]
-        };
-      }
-    }
-  );
 
   // Default chain info (Ethereum mainnet)
   server.resource(
-    "ethereum_chain_info", 
+    "_chain_info", 
     "evm://chain",
     async (uri) => {
       try {

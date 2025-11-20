@@ -16,8 +16,6 @@ import { normalize } from 'viem/ens';
 export function registerEVMTools(server: McpServer) {
   // NETWORK INFORMATION TOOLS
   
-
-
   // Get chain information
   server.tool(
     "get_core_contracts",
@@ -61,7 +59,7 @@ export function registerEVMTools(server: McpServer) {
   // Get chain information
   server.tool(
     "get_chain_info",
-    "Get information about an EVM network",
+    "Get information about Vitruveo network",
     {
 
     },
