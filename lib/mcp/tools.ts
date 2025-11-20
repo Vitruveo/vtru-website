@@ -935,8 +935,7 @@ export function registerEVMTools(server: McpServer) {
       try {
         const balance = await services.getERC20Balance(
           tokenAddress as Address,
-          address as Address,
-          network
+          address as Address
         );
         
         return {
@@ -1158,8 +1157,7 @@ export function registerEVMTools(server: McpServer) {
         const balance = await services.getERC1155Balance(
           tokenAddress as Address, 
           ownerAddress as Address, 
-          BigInt(tokenId),
-          DEFAULT_NETWORK
+          BigInt(tokenId)
         );
         
         return {
