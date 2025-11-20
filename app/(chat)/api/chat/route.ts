@@ -149,7 +149,7 @@ export async function POST(request: Request) {
       // New chat - no need to fetch messages, it's empty
     }
 
-    const uiMessages = [...convertToUIMessages(messagesFromDb), message];
+    const uiMessages = [...convertToUIMessages(messagesFromDb).slice(-10), message]; // Added slide to reduce tokens and cost
 
     const { longitude, latitude, city, country } = geolocation(request);
 
