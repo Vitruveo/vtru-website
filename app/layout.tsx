@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ai.vitruveo.net"),
+  metadataBase: new URL("https://ai.vitruveo.ai"),
   title: "Vitruveo AI",
   description: "Vitruveo AI chat and MCP server",
   icons: {

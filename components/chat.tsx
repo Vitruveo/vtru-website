@@ -3,7 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useEffect, useState } from "react";
-import { ChatHeader } from "@/components/chat-header";
+import { ChatQuickStart } from "@/components/chat-quick-start";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -31,9 +31,11 @@ const DEFAULT_MODEL = "chat-model";
 export function Chat({
   isReadonly,
   initialLastContext,
+  initialInput,
 }: {
   isReadonly: boolean;
   initialLastContext?: AppUsage;
+  initialInput?: string;
 }) {
   const { isLoaded, chatId, storedMessages, saveMessages, clearChat } = useChatStorage();
 
@@ -52,6 +54,7 @@ export function Chat({
       initialMessages={storedMessages}
       isReadonly={isReadonly}
       initialLastContext={initialLastContext}
+      initialInput={initialInput}
       saveMessages={saveMessages}
       clearChat={clearChat}
     />
@@ -63,6 +66,7 @@ function ChatInner({
   initialMessages,
   isReadonly,
   initialLastContext,
+  initialInput,
   saveMessages,
   clearChat,
 }: {
@@ -70,14 +74,16 @@ function ChatInner({
   initialMessages: ChatMessage[];
   isReadonly: boolean;
   initialLastContext?: AppUsage;
+  initialInput?: string;
   saveMessages: (messages: ChatMessage[]) => void;
   clearChat: () => string;
 }) {
   const { setDataStream } = useDataStream();
 
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>(initialInput || "");
   const [usage, setUsage] = useState<AppUsage | undefined>(initialLastContext);
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
+  const [hasAutoSent, setHasAutoSent] = useState(false);
 
   const {
     messages,
@@ -131,6 +137,22 @@ function ChatInner({
     },
   });
 
+  // Auto-send initial input from URL params
+  useEffect(() => {
+    if (initialInput && !hasAutoSent) {
+      setHasAutoSent(true);
+      // Small delay to ensure chat is ready
+      const timer = setTimeout(() => {
+        sendMessage({
+          role: 'user',
+          parts: [{ type: 'text', text: initialInput }],
+        });
+        setInput('');
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [initialInput, hasAutoSent, sendMessage]);
+
   // Save messages to localStorage whenever they change
   useEffect(() => {
     if (messages.length > 0) {
@@ -140,41 +162,61 @@ function ChatInner({
 
   const isArtifactVisible = useArtifactSelector((state) => state.isVisible);
 
+  const handleClearChat = () => {
+    clearChat();
+    setMessages([]);
+  };
+
   return (
     <>
-      <div className="overscroll-behavior-contain flex h-dvh min-w-0 touch-pan-y flex-col bg-background">
-        <ChatHeader chatId={chatId} onNewChat={() => {
-          clearChat();
-          setMessages([]);
-        }} />
+      <div className="chat-layout">
+        {/* Quick Start Panel - Desktop Only */}
+        <aside className="chat-sidebar">
+          <ChatQuickStart sendMessage={sendMessage} />
+          <button
+            onClick={handleClearChat}
+            className="clear-chat-btn"
+            title="Clear chat"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
+            </svg>
+          </button>
+        </aside>
 
-        <Messages
-          chatId={chatId}
-          isArtifactVisible={isArtifactVisible}
-          isReadonly={isReadonly}
-          messages={messages}
-          regenerate={regenerate}
-          selectedModelId={DEFAULT_MODEL}
-          setMessages={setMessages}
-          status={status}
-          votes={undefined}
-        />
-
-        <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-2 pb-3 md:px-4 md:pb-4">
-          {!isReadonly && (
-            <MultimodalInput
+        {/* Chat Area */}
+        <div className="chat-area">
+          <div className="overscroll-behavior-contain flex h-full min-w-0 touch-pan-y flex-col bg-background">
+            <Messages
               chatId={chatId}
-              input={input}
+              isArtifactVisible={isArtifactVisible}
+              isReadonly={isReadonly}
               messages={messages}
-              selectedVisibilityType="private"
-              sendMessage={sendMessage}
-              setInput={setInput}
+              regenerate={regenerate}
+              selectedModelId={DEFAULT_MODEL}
               setMessages={setMessages}
               status={status}
-              stop={stop}
-              usage={usage}
+              votes={undefined}
             />
-          )}
+
+            <div className="chat-input-container">
+              {!isReadonly && (
+                <MultimodalInput
+                  chatId={chatId}
+                  input={input}
+                  messages={messages}
+                  selectedVisibilityType="private"
+                  sendMessage={sendMessage}
+                  setInput={setInput}
+                  setMessages={setMessages}
+                  status={status}
+                  stop={stop}
+                  usage={usage}
+                  onClearChat={handleClearChat}
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
 

@@ -40,6 +40,7 @@ function PureMultimodalInput({
   className,
   selectedVisibilityType,
   usage,
+  onClearChat,
 }: {
   chatId: string;
   input: string;
@@ -52,6 +53,7 @@ function PureMultimodalInput({
   className?: string;
   selectedVisibilityType: VisibilityType;
   usage?: AppUsage;
+  onClearChat?: () => void;
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
@@ -129,14 +131,6 @@ function PureMultimodalInput({
 
   return (
     <div className={cn("relative flex w-full flex-col gap-4", className)}>
-      {messages.length === 0 && (
-        <SuggestedActions
-          chatId={chatId}
-          selectedVisibilityType={selectedVisibilityType}
-          sendMessage={sendMessage}
-        />
-      )}
-
       <PromptInput
         className="rounded-xl border border-border bg-background p-3 shadow-xs transition-all duration-200 focus-within:border-border hover:border-muted-foreground/50"
         onSubmit={(event) => {
@@ -170,7 +164,7 @@ function PureMultimodalInput({
             <StopButton setMessages={setMessages} stop={stop} />
           ) : (
             <PromptInputSubmit
-              className="size-8 rounded-full bg-primary text-primary-foreground transition-colors duration-200 hover:bg-primary/90 disabled:bg-muted disabled:text-muted-foreground"
+              className="size-8 rounded-full bg-[#a1ff75] text-black transition-colors duration-200 hover:bg-[#8de562] disabled:bg-muted disabled:text-muted-foreground"
               disabled={!input.trim()}
               status={status}
               data-testid="send-button"
@@ -190,6 +184,7 @@ export const MultimodalInput = memo(
     if (prevProps.input !== nextProps.input) return false;
     if (prevProps.status !== nextProps.status) return false;
     if (prevProps.selectedVisibilityType !== nextProps.selectedVisibilityType) return false;
+    if (prevProps.messages.length !== nextProps.messages.length) return false;
     return true;
   }
 );

@@ -1,0 +1,318 @@
+/* Vitruveo Site Custom Styles */
+
+:root {
+  --vtru-green: #a1ff75;
+  --vtru-green-dark: #8ae65f;
+  --vtru-dark: #0a0a0a;
+  --vtru-dark-2: #141414;
+  --vtru-dark-3: #1a1a1a;
+  --vtru-dark-4: #242424;
+}
+
+/* Override Bootstrap defaults for dark theme */
+body {
+  background-color: var(--vtru-dark) !important;
+  color: #fff !important;
+}
+
+/* Navbar customization - force visibility over Tailwind resets */
+.navbar {
+  background-color: rgba(10, 10, 10, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0 !important;
+}
+
+.navbar .container {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  display: flex !important;
+}
+
+.navbar-brand img {
+  height: 32px;
+  display: block !important;
+}
+
+.navbar-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.5rem;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav-item {
+  display: block !important;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-decoration: none !important;
+  padding: 0.5rem 1rem !important;
+  display: block !important;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--vtru-green) !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  display: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Desktop: always show navbar-collapse */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+}
+
+/* Mobile responsive navbar */
+@media (max-width: 991.98px) {
+  .navbar-toggler {
+    display: block !important;
+  }
+
+  .navbar-collapse {
+    display: none !important;
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .navbar-collapse.show {
+    display: block !important;
+  }
+
+  .navbar-nav {
+    flex-direction: column !important;
+    width: 100%;
+    padding-top: 1rem;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0 !important;
+  }
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--vtru-green) !important;
+  border-color: var(--vtru-green) !important;
+  color: #000 !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--vtru-green-dark) !important;
+  border-color: var(--vtru-green-dark) !important;
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Video Hero */
+.hero-video {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.hero-video .video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-video .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.5));
+  z-index: 1;
+}
+
+.hero-video .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Page hero (smaller) */
+.page-hero {
+  position: relative;
+  min-height: 60vh;
+  overflow: hidden;
+}
+
+.page-hero .video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.page-hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.5));
+  z-index: 1;
+}
+
+.page-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sections */
+.section-dark {
+  background-color: var(--vtru-dark);
+}
+
+.section-dark-2 {
+  background-color: var(--vtru-dark-2);
+}
+
+.section-dark-3 {
+  background-color: var(--vtru-dark-3);
+}
+
+/* Cards */
+.card-dark {
+  background-color: var(--vtru-dark-3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Text */
+.text-vtru-green {
+  color: var(--vtru-green) !important;
+}
+
+.text-muted-light {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Code blocks */
+.code-block {
+  background-color: var(--vtru-dark-3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.code-block pre {
+  margin: 0;
+  color: var(--vtru-green);
+  font-family: var(--bs-font-monospace);
+}
+
+/* Footer */
+footer {
+  background-color: var(--vtru-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--vtru-green);
+}
+
+/* Chat widget */
+.chat-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+}
+
+.chat-widget .input-group {
+  background-color: var(--vtru-dark-3);
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.chat-widget input {
+  background-color: transparent !important;
+  border: none !important;
+  color: #fff !important;
+  padding: 0.75rem 1.25rem;
+}
+
+.chat-widget input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.chat-widget input:focus {
+  box-shadow: none !important;
+}
+
+.chat-widget .btn {
+  background-color: var(--vtru-green);
+  border: none;
+  border-radius: 50% !important;
+  width: 44px;
+  height: 44px;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-widget .btn:hover {
+  background-color: var(--vtru-green-dark);
+}
+
+/* PSC info styles */
+.psc-badge {
+  display: inline-block;
+  background-color: var(--vtru-dark-3);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: var(--bs-font-monospace);
+}
+
+.psc-badge .label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.psc-badge code {
+  color: var(--vtru-green);
+}

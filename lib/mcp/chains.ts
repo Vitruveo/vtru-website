@@ -1,7 +1,7 @@
 import { type Chain } from 'viem';
 
 // Default configuration values
-export const DEFAULT_RPC_URL = 'https://rpc.vitruveo.xyz';
+export const DEFAULT_RPC_URL = 'https://rpc.vitruveo.ai';
 export const DEFAULT_CHAIN_ID = 1490;
 export const DEFAULT_NETWORK = 'vitruveo';
 export const DEFAULT_NETWORK_NAME = 'Vitruveo';
@@ -23,7 +23,7 @@ const vitruveo = {
     default: { http: [DEFAULT_RPC_URL] },
   },
   blockExplorers: {
-    default: { name: `${DEFAULT_NETWORK_NAME} Explorer`, url: 'https://explorer.vitruveo.net' },
+    default: { name: `${DEFAULT_NETWORK_NAME} Explorer`, url: 'https://explorer.vitruveo.ai' },
   },
   testnet: false,
 };
