@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ai.vitruveo.net"),
   title: "Vitruveo AI",
   description: "Vitruveo AI chat and MCP server",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export const viewport = {

@@ -55,7 +55,8 @@ export function registerEVMTools(server: McpServer) {
         };
       }
     }
-  );''
+  );
+
   // Get chain information
   server.tool(
     "get_chain_info",

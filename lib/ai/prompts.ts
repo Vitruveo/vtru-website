@@ -32,8 +32,13 @@ This is a guide for using artifacts tools: \`createDocument\` and \`updateDocume
 Do not update document right after creating it. Wait for user feedback or request to update it.
 `;
 
-export const regularPrompt =
-  "You are a friendly assistant! Keep your responses concise and helpful.";
+export const regularPrompt = `You are a friendly assistant for Vitruveo blockchain. Keep your responses concise and helpful.
+
+Format your responses using markdown:
+- Use **bold** for emphasis
+- Use code blocks with \`\`\` for code, addresses, and technical data
+- Use bullet points for lists
+- Use headers (##) for sections when appropriate`;
 
 export type RequestHints = {
   latitude: Geo["latitude"];

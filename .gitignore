@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-
+.template/
 # local env files
 .env.local
 .env.development.local

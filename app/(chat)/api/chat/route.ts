@@ -27,6 +27,54 @@ import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
 export const maxDuration = 60;
 
+// Fix MCP tool schemas for Gemini compatibility
+// Gemini requires array types to have an `items` field
+function fixToolSchemas(tools: Record<string, any>): Record<string, any> {
+  const fixed: Record<string, any> = {};
+
+  for (const [name, tool] of Object.entries(tools)) {
+    if (tool.inputSchema?.jsonSchema) {
+      fixed[name] = {
+        ...tool,
+        inputSchema: {
+          ...tool.inputSchema,
+          jsonSchema: fixSchema(tool.inputSchema.jsonSchema),
+        },
+      };
+    } else {
+      fixed[name] = tool;
+    }
+  }
+
+  return fixed;
+}
+
+function fixSchema(schema: any): any {
+  if (!schema || typeof schema !== 'object') return schema;
+
+  const result = { ...schema };
+
+  // Fix array types missing items
+  if (result.type === 'array' && !result.items) {
+    result.items = { type: 'string' };
+  }
+
+  // Recursively fix properties
+  if (result.properties) {
+    result.properties = {};
+    for (const [key, value] of Object.entries(schema.properties)) {
+      result.properties[key] = fixSchema(value);
+    }
+  }
+
+  // Recursively fix items
+  if (result.items && typeof result.items === 'object') {
+    result.items = fixSchema(result.items);
+  }
+
+  return result;
+}
+
 const getTokenlensCatalog = cache(
   async (): Promise<ModelCatalog | undefined> => {
     try {
@@ -77,13 +125,18 @@ export async function POST(request: Request) {
       country,
     };
 
+    const host = request.headers.get("host") || "localhost:3000";
+    const protocol = host.includes("localhost") ? "http" : "https";
+    const mcpUrl = `${protocol}://${host}/mcp`;
+
     const mcpClient = await createMCPClient({
       transport: {
         type: "http",
-        url: "https://vtru-chat.vercel.app/mcp",
+        url: mcpUrl,
       },
     });
-    const vitruveo = await mcpClient.tools();
+    const rawVitruveo = await mcpClient.tools();
+    const vitruveo = fixToolSchemas(rawVitruveo);
 
     let finalMergedUsage: AppUsage | undefined;
 

@@ -1,32 +1,20 @@
 import { z } from "zod";
 
-const textPartSchema = z.object({
-  type: z.enum(["text"]),
-  text: z.string().min(1).max(2000),
-});
-
-const filePartSchema = z.object({
-  type: z.enum(["file"]),
-  mediaType: z.enum(["image/jpeg", "image/png"]),
-  name: z.string().min(1).max(100),
-  url: z.string().url(),
-});
-
-const partSchema = z.union([textPartSchema, filePartSchema]);
+// More permissive schema to handle AI SDK message formats
+const partSchema = z.object({
+  type: z.string(),
+  text: z.string().optional(),
+}).passthrough();
 
 const messageSchema = z.object({
-  id: z.string().uuid(),
-  role: z.enum(["user", "assistant"]),
-  parts: z.array(partSchema),
-});
+  id: z.string(),
+  role: z.enum(["system", "user", "assistant"]),
+  parts: z.array(partSchema).optional(),
+}).passthrough();
 
 export const postRequestBodySchema = z.object({
-  id: z.string().uuid(),
-  message: z.object({
-    id: z.string().uuid(),
-    role: z.enum(["user"]),
-    parts: z.array(partSchema),
-  }),
+  id: z.string(),
+  message: messageSchema,
   messages: z.array(messageSchema).optional(),
   selectedChatModel: z.enum(["chat-model", "chat-model-reasoning"]),
   selectedVisibilityType: z.enum(["public", "private"]).optional(),

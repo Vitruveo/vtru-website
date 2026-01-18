@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChatHeader } from "@/components/chat-header";
 import {
   AlertDialog,
@@ -15,6 +15,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useArtifactSelector } from "@/hooks/use-artifact";
+import { useChatStorage } from "@/hooks/use-chat-storage";
 import { ChatSDKError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import type { AppUsage } from "@/lib/usage";
@@ -28,15 +29,49 @@ import { toast } from "./toast";
 const DEFAULT_MODEL = "chat-model";
 
 export function Chat({
-  id,
-  initialMessages,
   isReadonly,
   initialLastContext,
 }: {
-  id: string;
+  isReadonly: boolean;
+  initialLastContext?: AppUsage;
+}) {
+  const { isLoaded, chatId, storedMessages, saveMessages, clearChat } = useChatStorage();
+
+  // Show loading state while localStorage is being read
+  if (!isLoaded || !chatId) {
+    return (
+      <div className="flex h-dvh items-center justify-center bg-background">
+        <div className="text-muted-foreground">Loading...</div>
+      </div>
+    );
+  }
+
+  return (
+    <ChatInner
+      chatId={chatId}
+      initialMessages={storedMessages}
+      isReadonly={isReadonly}
+      initialLastContext={initialLastContext}
+      saveMessages={saveMessages}
+      clearChat={clearChat}
+    />
+  );
+}
+
+function ChatInner({
+  chatId,
+  initialMessages,
+  isReadonly,
+  initialLastContext,
+  saveMessages,
+  clearChat,
+}: {
+  chatId: string;
   initialMessages: ChatMessage[];
   isReadonly: boolean;
   initialLastContext?: AppUsage;
+  saveMessages: (messages: ChatMessage[]) => void;
+  clearChat: () => string;
 }) {
   const { setDataStream } = useDataStream();
 
@@ -52,7 +87,7 @@ export function Chat({
     stop,
     regenerate,
   } = useChat<ChatMessage>({
-    id,
+    id: chatId,
     messages: initialMessages,
     experimental_throttle: 100,
     generateId: generateUUID,
@@ -71,6 +106,15 @@ export function Chat({
         };
       },
     }),
+    onData: (data) => {
+      // Handle custom data events like usage
+      if (data && typeof data === 'object' && 'type' in data) {
+        const event = data as { type: string; data: unknown };
+        if (event.type === 'data-usage') {
+          setUsage(event.data as AppUsage);
+        }
+      }
+    },
     onError: (error) => {
       if (error instanceof ChatSDKError) {
         if (
@@ -87,15 +131,25 @@ export function Chat({
     },
   });
 
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    if (messages.length > 0) {
+      saveMessages(messages);
+    }
+  }, [messages, saveMessages]);
+
   const isArtifactVisible = useArtifactSelector((state) => state.isVisible);
 
   return (
     <>
       <div className="overscroll-behavior-contain flex h-dvh min-w-0 touch-pan-y flex-col bg-background">
-        <ChatHeader chatId={id} />
+        <ChatHeader chatId={chatId} onNewChat={() => {
+          clearChat();
+          setMessages([]);
+        }} />
 
         <Messages
-          chatId={id}
+          chatId={chatId}
           isArtifactVisible={isArtifactVisible}
           isReadonly={isReadonly}
           messages={messages}
@@ -109,7 +163,7 @@ export function Chat({
         <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-2 pb-3 md:px-4 md:pb-4">
           {!isReadonly && (
             <MultimodalInput
-              chatId={id}
+              chatId={chatId}
               input={input}
               messages={messages}
               selectedVisibilityType="private"
@@ -125,7 +179,7 @@ export function Chat({
       </div>
 
       <Artifact
-        chatId={id}
+        chatId={chatId}
         input={input}
         isReadonly={isReadonly}
         messages={messages}
