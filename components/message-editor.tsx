@@ -9,7 +9,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { deleteTrailingMessages } from "@/app/(chat)/actions";
 import type { ChatMessage } from "@/lib/types";
 import { getTextFromMessage } from "@/lib/utils";
 import { Button } from "./ui/button";
@@ -80,10 +79,7 @@ export function MessageEditor({
           onClick={async () => {
             setIsSubmitting(true);
 
-            await deleteTrailingMessages({
-              id: message.id,
-            });
-
+            // No need to delete from DB - messages are in-memory only
             setMessages((messages) => {
               const index = messages.findIndex((m) => m.id === message.id);
 

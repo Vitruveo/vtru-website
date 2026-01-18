@@ -1,8 +1,6 @@
 "use server";
 
-import { getSuggestionsByDocumentId } from "@/lib/db/queries";
-
+// Suggestions are no longer persisted - return empty array
 export async function getSuggestions({ documentId }: { documentId: string }) {
-  const suggestions = await getSuggestionsByDocumentId({ documentId });
-  return suggestions ?? [];
+  return [];
 }

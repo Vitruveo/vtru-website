@@ -1,11 +1,10 @@
 import type { UIMessageStreamWriter } from "ai";
-import type { Session } from "next-auth";
 import { codeDocumentHandler } from "@/artifacts/code/server";
 import { sheetDocumentHandler } from "@/artifacts/sheet/server";
 import { textDocumentHandler } from "@/artifacts/text/server";
 import type { ArtifactKind } from "@/components/artifact";
-import { saveDocument } from "../db/queries";
-import type { Document } from "../db/schema";
+import { storeDocument } from "../ai/tools/update-document";
+import type { Document } from "../types";
 import type { ChatMessage } from "../types";
 
 export type SaveDocumentProps = {
@@ -13,21 +12,20 @@ export type SaveDocumentProps = {
   title: string;
   kind: ArtifactKind;
   content: string;
-  userId: string;
 };
 
 export type CreateDocumentCallbackProps = {
   id: string;
   title: string;
   dataStream: UIMessageStreamWriter<ChatMessage>;
-  session: Session;
+  session: unknown;
 };
 
 export type UpdateDocumentCallbackProps = {
   document: Document;
   description: string;
   dataStream: UIMessageStreamWriter<ChatMessage>;
-  session: Session;
+  session: unknown;
 };
 
 export type DocumentHandler<T = ArtifactKind> = {
@@ -51,15 +49,15 @@ export function createDocumentHandler<T extends ArtifactKind>(config: {
         session: args.session,
       });
 
-      if (args.session?.user?.id) {
-        await saveDocument({
-          id: args.id,
-          title: args.title,
-          content: draftContent,
-          kind: config.kind,
-          userId: args.session.user.id,
-        });
-      }
+      // Store document in memory for the session
+      storeDocument({
+        id: args.id,
+        title: args.title,
+        content: draftContent,
+        kind: config.kind,
+        createdAt: new Date(),
+        userId: "anonymous",
+      });
 
       return;
     },
@@ -71,15 +69,15 @@ export function createDocumentHandler<T extends ArtifactKind>(config: {
         session: args.session,
       });
 
-      if (args.session?.user?.id) {
-        await saveDocument({
-          id: args.document.id,
-          title: args.document.title,
-          content: draftContent,
-          kind: config.kind,
-          userId: args.session.user.id,
-        });
-      }
+      // Store updated document in memory
+      storeDocument({
+        id: args.document.id,
+        title: args.document.title,
+        content: draftContent,
+        kind: config.kind,
+        createdAt: new Date(),
+        userId: "anonymous",
+      });
 
       return;
     },

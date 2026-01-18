@@ -3,7 +3,7 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import equal from "fast-deep-equal";
 import { motion } from "framer-motion";
 import { memo, useState } from "react";
-import type { Vote } from "@/lib/db/schema";
+import type { Vote } from "@/lib/types";
 import type { ChatMessage } from "@/lib/types";
 import { cn, sanitizeText } from "@/lib/utils";
 import { useDataStream } from "./data-stream-provider";
@@ -22,8 +22,6 @@ import { SparklesIcon } from "./icons";
 import { MessageActions } from "./message-actions";
 import { MessageEditor } from "./message-editor";
 import { MessageReasoning } from "./message-reasoning";
-import { PreviewAttachment } from "./preview-attachment";
-import { Weather } from "./weather";
 
 const PurePreviewMessage = ({
   chatId,
@@ -45,10 +43,6 @@ const PurePreviewMessage = ({
   requiresScrollPadding: boolean;
 }) => {
   const [mode, setMode] = useState<"view" | "edit">("view");
-
-  const attachmentsFromMessage = message.parts.filter(
-    (part) => part.type === "file"
-  );
 
   useDataStream();
 
@@ -88,24 +82,6 @@ const PurePreviewMessage = ({
               message.role === "user" && mode !== "edit",
           })}
         >
-          {attachmentsFromMessage.length > 0 && (
-            <div
-              className="flex flex-row justify-end gap-2"
-              data-testid={"message-attachments"}
-            >
-              {attachmentsFromMessage.map((attachment) => (
-                <PreviewAttachment
-                  attachment={{
-                    name: attachment.filename ?? "file",
-                    contentType: attachment.mediaType,
-                    url: attachment.url,
-                  }}
-                  key={attachment.url}
-                />
-              ))}
-            </div>
-          )}
-
           {message.parts?.map((part, index) => {
             const { type } = part;
             const key = `message-${message.id}-part-${index}`;
@@ -163,27 +139,6 @@ const PurePreviewMessage = ({
                   </div>
                 );
               }
-            }
-
-            if (type === "tool-getWeather") {
-              const { toolCallId, state } = part;
-
-              return (
-                <Tool defaultOpen={true} key={toolCallId}>
-                  <ToolHeader state={state} type="tool-getWeather" />
-                  <ToolContent>
-                    {state === "input-available" && (
-                      <ToolInput input={part.input} />
-                    )}
-                    {state === "output-available" && (
-                      <ToolOutput
-                        errorText={undefined}
-                        output={<Weather weatherAtLocation={part.output} />}
-                      />
-                    )}
-                  </ToolContent>
-                </Tool>
-              );
             }
 
             if (type === "tool-createDocument") {

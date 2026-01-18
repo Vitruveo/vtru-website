@@ -1,14 +1,23 @@
 import { tool, type UIMessageStreamWriter } from "ai";
-import type { Session } from "next-auth";
 import { z } from "zod";
 import { documentHandlersByArtifactKind } from "@/lib/artifacts/server";
-import { getDocumentById } from "@/lib/db/queries";
-import type { ChatMessage } from "@/lib/types";
+import type { ChatMessage, Document } from "@/lib/types";
 
 type UpdateDocumentProps = {
-  session: Session;
+  session: unknown;
   dataStream: UIMessageStreamWriter<ChatMessage>;
 };
+
+// In-memory document store for the session
+const documentStore = new Map<string, Document>();
+
+export function storeDocument(doc: Document) {
+  documentStore.set(doc.id, doc);
+}
+
+export function getStoredDocument(id: string): Document | undefined {
+  return documentStore.get(id);
+}
 
 export const updateDocument = ({ session, dataStream }: UpdateDocumentProps) =>
   tool({
@@ -20,7 +29,7 @@ export const updateDocument = ({ session, dataStream }: UpdateDocumentProps) =>
         .describe("The description of changes that need to be made"),
     }),
     execute: async ({ id, description }) => {
-      const document = await getDocumentById({ id });
+      const document = getStoredDocument(id);
 
       if (!document) {
         return {

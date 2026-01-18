@@ -1,14 +1,12 @@
 import { streamObject, tool, type UIMessageStreamWriter } from "ai";
-import type { Session } from "next-auth";
 import { z } from "zod";
-import { getDocumentById, saveSuggestions } from "@/lib/db/queries";
-import type { Suggestion } from "@/lib/db/schema";
-import type { ChatMessage } from "@/lib/types";
+import type { ChatMessage, Suggestion } from "@/lib/types";
 import { generateUUID } from "@/lib/utils";
 import { myProvider } from "../providers";
+import { getStoredDocument } from "./update-document";
 
 type RequestSuggestionsProps = {
-  session: Session;
+  session: unknown;
   dataStream: UIMessageStreamWriter<ChatMessage>;
 };
 
@@ -24,7 +22,7 @@ export const requestSuggestions = ({
         .describe("The ID of the document to request edits"),
     }),
     execute: async ({ documentId }) => {
-      const document = await getDocumentById({ id: documentId });
+      const document = getStoredDocument(documentId);
 
       if (!document || !document.content) {
         return {
@@ -70,18 +68,7 @@ export const requestSuggestions = ({
         suggestions.push(suggestion);
       }
 
-      if (session.user?.id) {
-        const userId = session.user.id;
-
-        await saveSuggestions({
-          suggestions: suggestions.map((suggestion) => ({
-            ...suggestion,
-            userId,
-            createdAt: new Date(),
-            documentCreatedAt: document.createdAt,
-          })),
-        });
-      }
+      // Suggestions are no longer persisted to database
 
       return {
         id: documentId,
