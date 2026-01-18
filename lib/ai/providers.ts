@@ -1,5 +1,4 @@
-import { gateway } from "@ai-sdk/gateway";
-//import { google } from "@ai-sdk/google";
+import { google } from "@ai-sdk/google";
 import {
   customProvider,
   extractReasoningMiddleware,
@@ -24,37 +23,14 @@ export const myProvider = isTestEnvironment
         },
       });
     })()
-  : 
-    // customProvider({
-    //   languageModels: {
-    //     "chat-model": gateway.languageModel("xai/grok-2-vision-1212"),
-    //     "chat-model-reasoning": wrapLanguageModel({
-    //       model: gateway.languageModel("xai/grok-3-mini"),
-    //       middleware: extractReasoningMiddleware({ tagName: "think" }),
-    //     }),
-    //     "title-model": gateway.languageModel("xai/grok-2-1212"),
-    //     "artifact-model": gateway.languageModel("xai/grok-2-1212"),
-    //   },
-    // });
-    customProvider({
+  : customProvider({
       languageModels: {
-        "chat-model": gateway.languageModel("anthropic/claude-haiku-4.5"),
+        "chat-model": google("gemini-2.0-flash"),
         "chat-model-reasoning": wrapLanguageModel({
-          model: gateway.languageModel("anthropic/claude-haiku-4.5"),
+          model: google("gemini-2.0-flash"),
           middleware: extractReasoningMiddleware({ tagName: "think" }),
         }),
-        "title-model": gateway.languageModel("anthropic/claude-haiku-4.5"),
-        "artifact-model": gateway.languageModel("anthropic/claude-haiku-4.5"),
+        "title-model": google("gemini-2.0-flash"),
+        "artifact-model": google("gemini-2.0-flash"),
       },
-    // customProvider({
-    //   languageModels: {
-    //   // *** Use the cost-effective model and define the tool ***
-    //   "chat-model": google("gemini-2.5-anthropic/claude-sonnet-4-lite"), // Use the Lite model for cost-saving
-    //   "chat-model-reasoning": wrapLanguageModel({
-    //     model: google("gemini-2.5-flash-lite"), // Use same model for simple reasoning
-    //     middleware: extractReasoningMiddleware({ tagName: "think" }),
-    //   }),
-    //   "title-model": google("gemini-2.5-flash-lite"),
-    //   "artifact-model": google("gemini-2.5-flash-lite"),
-    // },
-  });
+    });
