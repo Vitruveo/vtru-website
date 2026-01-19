@@ -3,7 +3,6 @@
 import { usePathname, useRouter } from 'next/navigation';
 
 const PSC_LIST = [
-  { name: 'HTTP Outbound Service Trigger', slug: 'host' },
   { name: 'Trend', slug: 'trend' },
   { name: 'Random Number Generator', slug: 'rng' },
   { name: 'Shuffle', slug: 'shuffle' },
