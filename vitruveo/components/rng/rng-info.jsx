@@ -22,8 +22,8 @@ export function RngInfo() {
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">What It Does</h3>
         <p className="text-muted-light">
-          Generates 256-bit pseudo-random numbers from block context combined with
-          a caller-provided seed. Fast, cheap randomness for games, mints, and selection.
+          Generates 256-bit pseudo-random numbers from protocol-generated seed combined with
+          optional caller-provided salt. Fast, cheap randomness for games, mints, and selection.
         </p>
       </section>
 
@@ -38,22 +38,23 @@ export function RngInfo() {
 
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">Entropy Sources</h3>
-        <ul className="text-muted-light">
-          <li className="mb-2"><strong className="text-white">ParentHash:</strong> Previous block's validator signature (high entropy)</li>
+        <p className="text-muted-light mb-3">Protocol-generated seed (deterministic for node, unpredictable for user):</p>
+        <ul className="text-muted-light mb-3">
+          <li className="mb-2"><strong className="text-white">ParentHash:</strong> Previous block's hash (high entropy)</li>
           <li className="mb-2"><strong className="text-white">ChainID:</strong> Network identifier</li>
-          <li className="mb-2"><strong className="text-white">Nonce:</strong> Transaction sender's nonce (uniqueness per tx)</li>
+          <li className="mb-2"><strong className="text-white">BlockNumber:</strong> Current block number</li>
           <li className="mb-2"><strong className="text-white">Timestamp:</strong> Block timestamp</li>
-          <li className="mb-2"><strong className="text-white">Caller Seed:</strong> Your additional entropy input</li>
         </ul>
+        <p className="text-muted-light">Plus optional caller-provided <strong className="text-white">salt</strong> for additional entropy.</p>
       </section>
 
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">Interface</h3>
-        <div className="code-block"><pre>{`Input:  bytes (optional seed)
+        <div className="code-block"><pre>{`Input:  bytes (optional salt)
 Output: bytes32 (256-bit random value)
 
-// Different seeds = different outputs in same block
-// Same seed in different blocks = different outputs`}</pre></div>
+// Different salt = different outputs in same block
+// Same salt in different blocks = different outputs`}</pre></div>
       </section>
 
       <section className="mb-5">

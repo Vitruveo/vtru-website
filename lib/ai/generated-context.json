@@ -1,0 +1,206 @@
+{
+  "generatedAt": "2026-01-19T02:15:34.101Z",
+  "pages": [
+    {
+      "path": "/",
+      "title": "Vitruveo - The First Active Blockchain",
+      "description": "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities."
+    },
+    {
+      "path": "/about",
+      "title": "About",
+      "description": "Building the Active Blockchain. Learn about Vitruveo's approach to extending the EVM."
+    },
+    {
+      "path": "/developers",
+      "title": "Developers",
+      "description": "Familiar EVM. Unfamiliar Power. Build on Vitruveo with 12 protocol-level capabilities."
+    },
+    {
+      "path": "/developers/psc/batch-balance",
+      "title": "BatchBalance - Protocol Smart Contracts",
+      "description": "Query multiple ERC20 balances in a single call."
+    },
+    {
+      "path": "/developers/psc/batch-balance-native",
+      "title": "BatchBalanceNative - Protocol Smart Contracts",
+      "description": "Query native VTRU plus ERC20 balances in one call."
+    },
+    {
+      "path": "/developers/psc/batch-send-erc20",
+      "title": "BatchSendERC20 - Protocol Smart Contracts",
+      "description": "Send ERC20 tokens to multiple recipients in one transaction."
+    },
+    {
+      "path": "/developers/psc/batch-send-native",
+      "title": "BatchSendNative - Protocol Smart Contracts",
+      "description": "Send VTRU to multiple recipients in one transaction."
+    },
+    {
+      "path": "/developers/psc/compound-interest",
+      "title": "CompoundInterest - Protocol Smart Contracts",
+      "description": "High-precision compound interest calculation for DeFi."
+    },
+    {
+      "path": "/developers/psc/host",
+      "title": "HOST Protocol",
+      "description": "HTTP Outbound Service Trigger. Smart contracts that invoke AI agents and trigger agentic workflows during transaction execution."
+    },
+    {
+      "path": "/developers/psc/ibc",
+      "title": "IBC - Protocol Smart Contracts",
+      "description": "Cosmos IBC light client for cross-chain state verification."
+    },
+    {
+      "path": "/developers/psc/merkle-proof",
+      "title": "MerkleProof - Protocol Smart Contracts",
+      "description": "Verify Merkle tree membership proofs efficiently."
+    },
+    {
+      "path": "/developers/psc/passkey",
+      "title": "Passkey - Protocol Smart Contracts",
+      "description": "WebAuthn / P-256 signature verification for passwordless authentication."
+    },
+    {
+      "path": "/developers/psc/rng",
+      "title": "RNG - Protocol Smart Contracts",
+      "description": "Random number generation with protocol-level entropy."
+    },
+    {
+      "path": "/developers/psc/shuffle",
+      "title": "Shuffle - Protocol Smart Contracts",
+      "description": "Cryptographic 52-card deck shuffle using Fisher-Yates algorithm."
+    },
+    {
+      "path": "/developers/psc/trend",
+      "title": "Trend - Protocol Smart Contracts",
+      "description": "OLS regression and volatility analysis at the protocol level."
+    },
+    {
+      "path": "/ecosystem",
+      "title": "Ecosystem",
+      "description": "Explore apps and infrastructure building on Vitruveo."
+    },
+    {
+      "path": "/host-primer",
+      "title": "HOST Primer",
+      "description": "Deep dive into HOST Protocol: how smart contracts invoke AI agents and agentic workflows. Chain of Trust security model and workflow lifecycle."
+    }
+  ],
+  "pscs": [
+    {
+      "name": "HOST",
+      "slug": "host",
+      "address": "0x0000000000000000000000000000000000000099",
+      "description": "Trigger AI agents",
+      "gas": "25K+"
+    },
+    {
+      "name": "Trend",
+      "slug": "trend",
+      "address": "0x00000000000000000000000000000000000000DC",
+      "description": "OLS regression + volatility",
+      "gas": "20/byte"
+    },
+    {
+      "name": "RNG",
+      "slug": "rng",
+      "address": "0x00000000000000000000000000000000000000FF",
+      "description": "Random number generation",
+      "gas": "500"
+    },
+    {
+      "name": "Shuffle",
+      "slug": "shuffle",
+      "address": "0x00000000000000000000000000000000000000AB",
+      "description": "Cryptographic card shuffle",
+      "gas": "5K"
+    },
+    {
+      "name": "CompoundInterest",
+      "slug": "compound-interest",
+      "address": "0x00000000000000000000000000000000000000CC",
+      "description": "Calculate compound interest",
+      "gas": "500+"
+    },
+    {
+      "name": "Passkey",
+      "slug": "passkey",
+      "address": "0x00000000000000000000000000000000000000AA",
+      "description": "WebAuthn/P-256 verification",
+      "gas": "3.4K"
+    },
+    {
+      "name": "MerkleProof",
+      "slug": "merkle-proof",
+      "address": "0x00000000000000000000000000000000000000DD",
+      "description": "Verify Merkle proofs",
+      "gas": "1K+50/hash"
+    },
+    {
+      "name": "IBC",
+      "slug": "ibc",
+      "address": "0x00000000000000000000000000000000000001BC",
+      "description": "Cosmos light client",
+      "gas": "3K-200K+"
+    },
+    {
+      "name": "BatchBalance",
+      "slug": "batch-balance",
+      "address": "0x00000000000000000000000000000000000000BB",
+      "description": "Query ERC20 balances",
+      "gas": "100+30K/token"
+    },
+    {
+      "name": "BatchBalanceNative",
+      "slug": "batch-balance-native",
+      "address": "0x00000000000000000000000000000000000000BC",
+      "description": "Query native + ERC20 balances",
+      "gas": "100+30K/token"
+    },
+    {
+      "name": "BatchSendERC20",
+      "slug": "batch-send-erc20",
+      "address": "0x00000000000000000000000000000000000000EE",
+      "description": "Multi-recipient token transfer",
+      "gas": "200+50K/tx"
+    },
+    {
+      "name": "BatchSendNative",
+      "slug": "batch-send-native",
+      "address": "0x00000000000000000000000000000000000000EC",
+      "description": "Multi-recipient VTRU transfer",
+      "gas": "200+50K/tx"
+    }
+  ],
+  "mcpTools": [
+    "get_core_contracts",
+    "get_chain_info",
+    "get_block_by_number",
+    "get_latest_block",
+    "get_balance",
+    "get_erc20_balance",
+    "get_token_balance",
+    "get_transaction",
+    "get_transaction_receipt",
+    "estimate_gas",
+    "read_contract",
+    "is_contract",
+    "get_token_info",
+    "get_token_balance_erc20",
+    "get_nft_info",
+    "check_nft_ownership",
+    "get_erc1155_token_uri",
+    "get_nft_balance",
+    "get_erc1155_balance"
+  ],
+  "network": {
+    "chainId": 1490,
+    "name": "Vitruveo",
+    "rpc": "https://rpc.vitruveo.ai",
+    "explorer": "https://explorer.vitruveo.ai",
+    "bridge": "https://bridge.vitruveo.ai",
+    "blockTime": 5,
+    "gasPrice": 4
+  }
+}

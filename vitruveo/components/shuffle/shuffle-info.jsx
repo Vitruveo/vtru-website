@@ -37,7 +37,7 @@ export function ShuffleInfo() {
 
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">Interface</h3>
-        <div className="code-block"><pre>{`Input:  bytes (seed)
+        <div className="code-block"><pre>{`Input:  bytes (optional salt)
 Output: 104 bytes (52 cards x 2 chars)
 Format: SuitRank (e.g., "SA" = Ace of Spades, "CQ" = Queen of Clubs)
 

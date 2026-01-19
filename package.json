@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
+    "prebuild": "tsx scripts/generate-prompt-context.ts",
     "build": "next build",
     "start": "next start",
     "lint": "npx ultracite@latest check",
-    "format": "npx ultracite@latest fix"
+    "format": "npx ultracite@latest fix",
+    "generate-context": "tsx scripts/generate-prompt-context.ts"
   },
   "dependencies": {
     "@ai-sdk/gateway": "^2.0.12",

@@ -107,14 +107,9 @@ export async function POST(request: Request) {
       message,
       selectedChatModel,
       messages: existingMessages = [],
-    }: {
-      id: string;
-      message: ChatMessage;
-      selectedChatModel: ChatModel["id"];
-      messages?: ChatMessage[];
     } = requestBody;
 
-    const uiMessages = [...existingMessages.slice(-10), message];
+    const uiMessages = [...existingMessages.slice(-10), message] as ChatMessage[];
 
     const { longitude, latitude, city, country } = geolocation(request);
 

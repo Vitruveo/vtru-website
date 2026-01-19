@@ -1,8 +1,12 @@
 import { streamObject } from "ai";
 import { z } from "zod";
-import { codePrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { createDocumentHandler } from "@/lib/artifacts/server";
+
+const codePrompt = "You are a Python code generator that creates self-contained, executable code snippets. Keep snippets concise and avoid external dependencies.";
+
+const updateDocumentPrompt = (content: string | null) =>
+  `Improve the following code based on the given prompt.\n\n${content}`;
 
 export const codeDocumentHandler = createDocumentHandler<"code">({
   kind: "code",
@@ -44,7 +48,7 @@ export const codeDocumentHandler = createDocumentHandler<"code">({
 
     const { fullStream } = streamObject({
       model: myProvider.languageModel("artifact-model"),
-      system: updateDocumentPrompt(document.content, "code"),
+      system: updateDocumentPrompt(document.content),
       prompt: description,
       schema: z.object({
         code: z.string(),

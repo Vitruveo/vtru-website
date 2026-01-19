@@ -9,7 +9,7 @@ const partSchema = z.object({
 const messageSchema = z.object({
   id: z.string(),
   role: z.enum(["system", "user", "assistant"]),
-  parts: z.array(partSchema).optional(),
+  parts: z.array(partSchema).default([]),
 }).passthrough();
 
 export const postRequestBodySchema = z.object({

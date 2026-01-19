@@ -1,7 +1,9 @@
 import { smoothStream, streamText } from "ai";
-import { updateDocumentPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { createDocumentHandler } from "@/lib/artifacts/server";
+
+const updateDocumentPrompt = (content: string | null) =>
+  `Improve the following contents of the document based on the given prompt.\n\n${content}`;
 
 export const textDocumentHandler = createDocumentHandler<"text">({
   kind: "text",
@@ -39,7 +41,7 @@ export const textDocumentHandler = createDocumentHandler<"text">({
 
     const { fullStream } = streamText({
       model: myProvider.languageModel("artifact-model"),
-      system: updateDocumentPrompt(document.content, "text"),
+      system: updateDocumentPrompt(document.content),
       experimental_transform: smoothStream({ chunking: "word" }),
       prompt: description,
       providerOptions: {

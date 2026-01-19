@@ -1,6 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
-import { getSupportedNetworks, getRpcUrl, DEFAULT_NETWORK } from "./chains.ts";
+import { getRpcUrl, DEFAULT_NETWORK } from "./chains.ts";
 import * as services from "./services/index.ts";
 import { type Address, type Hex, type Hash } from 'viem';
 import { normalize } from 'viem/ens';
@@ -145,34 +145,6 @@ export function registerEVMTools(server: McpServer) {
   //   }
   // );
 
-  // Get supported networks
-  server.tool(
-    "get_supported_networks",
-    "Get a list of supported EVM networks",
-    {},
-    async () => {
-      try {
-        const networks = getSupportedNetworks();
-        
-        return {
-          content: [{
-            type: "text",
-            text: JSON.stringify({
-              supportedNetworks: networks
-            }, null, 2)
-          }]
-        };
-      } catch (error) {
-        return {
-          content: [{
-            type: "text",
-            text: `Error fetching supported networks: ${error instanceof Error ? error.message : String(error)}`
-          }],
-          isError: true
-        };
-      }
-    }
-  );
 
   // BLOCK TOOLS
   

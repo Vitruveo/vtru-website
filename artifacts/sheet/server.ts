@@ -1,8 +1,12 @@
 import { streamObject } from "ai";
 import { z } from "zod";
-import { sheetPrompt, updateDocumentPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { createDocumentHandler } from "@/lib/artifacts/server";
+
+const sheetPrompt = "You are a spreadsheet creation assistant. Create a spreadsheet in csv format based on the given prompt. The spreadsheet should contain meaningful column headers and data.";
+
+const updateDocumentPrompt = (content: string | null) =>
+  `Improve the following contents of the spreadsheet based on the given prompt.\n\n${content}`;
 
 export const sheetDocumentHandler = createDocumentHandler<"sheet">({
   kind: "sheet",
@@ -50,7 +54,7 @@ export const sheetDocumentHandler = createDocumentHandler<"sheet">({
 
     const { fullStream } = streamObject({
       model: myProvider.languageModel("artifact-model"),
-      system: updateDocumentPrompt(document.content, "sheet"),
+      system: updateDocumentPrompt(document.content),
       prompt: description,
       schema: z.object({
         csv: z.string(),

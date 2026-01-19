@@ -46,9 +46,6 @@ export function SiteHeader() {
               <Link href="/developers" className="nav-link" onClick={closeMenu}>Developers</Link>
             </li>
             <li className="nav-item">
-              <Link href="/developers/psc" className="nav-link" onClick={closeMenu}>PSC</Link>
-            </li>
-            <li className="nav-item">
               <Link href="/chat" className="nav-link" onClick={closeMenu}>AI Chat</Link>
             </li>
             <li className="nav-item ms-lg-3">

@@ -53,7 +53,7 @@ export function SiteFooter() {
           <div className="col-lg-3 col-md-6">
             <h6 className="text-white mb-3">Developers</h6>
             <ul className="list-unstyled small">
-              <li className="mb-2"><Link href="/developers/psc">Protocol Smart Contracts</Link></li>
+              <li className="mb-2"><Link href="/developers#psc">Protocol Smart Contracts</Link></li>
               <li className="mb-2"><Link href="/developers/psc/host">HOST Protocol</Link></li>
               <li className="mb-2"><Link href="/chat">AI Chat</Link></li>
               <li className="mb-2"><a href="https://github.com/vitruveo" target="_blank" rel="noopener noreferrer">GitHub</a></li>
