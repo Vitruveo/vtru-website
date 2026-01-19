@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChatQuickStart } from "@/components/chat-quick-start";
 import {
   AlertDialog,
@@ -83,7 +83,7 @@ function ChatInner({
   const [input, setInput] = useState<string>(initialInput || "");
   const [usage, setUsage] = useState<AppUsage | undefined>(initialLastContext);
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
-  const [hasAutoSent, setHasAutoSent] = useState(false);
+  const hasAutoSentRef = useRef(false);
 
   const {
     messages,
@@ -137,21 +137,17 @@ function ChatInner({
     },
   });
 
-  // Auto-send initial input from URL params
+  // Auto-send initial input from URL params (only if no existing messages)
   useEffect(() => {
-    if (initialInput && !hasAutoSent) {
-      setHasAutoSent(true);
-      // Small delay to ensure chat is ready
-      const timer = setTimeout(() => {
-        sendMessage({
-          role: 'user',
-          parts: [{ type: 'text', text: initialInput }],
-        });
-        setInput('');
-      }, 300);
-      return () => clearTimeout(timer);
+    if (initialInput && !hasAutoSentRef.current && status === 'ready' && messages.length === 0) {
+      hasAutoSentRef.current = true;
+      sendMessage({
+        role: 'user',
+        parts: [{ type: 'text', text: initialInput }],
+      });
+      setInput('');
     }
-  }, [initialInput, hasAutoSent, sendMessage]);
+  }, [initialInput, status, messages.length, sendMessage]);
 
   // Save messages to localStorage whenever they change
   useEffect(() => {

@@ -399,6 +399,49 @@ footer a:hover {
   background-color: var(--vtru-green-dark);
 }
 
+/* Footer chat input */
+.footer-chat-input {
+  display: flex;
+  align-items: center;
+  background-color: var(--vtru-dark-3);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.footer-chat-input input {
+  flex: 1;
+  background-color: transparent !important;
+  border: none !important;
+  color: #fff !important;
+  padding: 0.75rem 1.25rem;
+}
+
+.footer-chat-input input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-chat-input input:focus {
+  box-shadow: none !important;
+  outline: none;
+}
+
+.footer-chat-input .btn {
+  background-color: var(--vtru-green);
+  border: none;
+  border-radius: 50% !important;
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-chat-input .btn:hover {
+  background-color: var(--vtru-green-dark);
+}
+
 /* PSC info styles */
 .psc-badge {
   display: inline-block;

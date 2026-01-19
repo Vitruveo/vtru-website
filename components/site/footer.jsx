@@ -1,15 +1,27 @@
 'use client';
 
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { AddToMetaMaskButton } from './add-metamask-button';
 
 export function SiteFooter() {
+  const [input, setInput] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.trim()) {
+      router.push(`/chat?q=${encodeURIComponent(input.trim())}`);
+    }
+  };
+
   return (
     <footer className="py-5">
       <div className="container">
         <div className="row g-4">
           {/* Brand */}
-          <div className="col-lg-4 col-md-6">
+          <div className="col-lg-3 col-md-6">
             <Link href="/">
               <img
                 src="/images/vitruveo-logo-horizontal.svg"
@@ -45,30 +57,30 @@ export function SiteFooter() {
               <li className="mb-2"><Link href="/">Home</Link></li>
               <li className="mb-2"><Link href="/about">About</Link></li>
               <li className="mb-2"><Link href="/ecosystem">Ecosystem</Link></li>
-              <li className="mb-2"><Link href="/developers">Developers</Link></li>
             </ul>
           </div>
 
-          {/* Developers */}
-          <div className="col-lg-3 col-md-6">
-            <h6 className="text-white mb-3">Developers</h6>
-            <ul className="list-unstyled small">
-              <li className="mb-2"><Link href="/developers#psc">Protocol Smart Contracts</Link></li>
-              <li className="mb-2"><Link href="/developers/psc/host">HOST Protocol</Link></li>
-              <li className="mb-2"><Link href="/chat">AI Chat</Link></li>
-              <li className="mb-2"><a href="https://github.com/vitruveo" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            </ul>
+          {/* AI Chat */}
+          <div className="col-lg-5 col-md-12">
+            <h6 className="text-white mb-3">Ask Vitruveo AI</h6>
+            <form onSubmit={handleSubmit}>
+              <div className="footer-chat-input">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder="Ask about Vitruveo, PSCs, building on-chain..."
+                  className="form-control"
+                />
+                <button type="submit" className="btn" aria-label="Send">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
+                </button>
+              </div>
+            </form>
           </div>
 
-          {/* Network */}
-          <div className="col-lg-3 col-md-6">
-            <h6 className="text-white mb-3">Network</h6>
-            <ul className="list-unstyled small">
-              <li className="mb-2"><a href="https://explorer.vitruveo.ai" target="_blank" rel="noopener noreferrer">Explorer</a></li>
-              <li className="mb-2"><a href="https://bridge.vitruveo.ai" target="_blank" rel="noopener noreferrer">Bridge</a></li>
-              <li className="mb-2"><a href="https://scope.vitruveo.ai" target="_blank" rel="noopener noreferrer">Scope DEX</a></li>
-            </ul>
-          </div>
         </div>
 
         {/* Bottom */}

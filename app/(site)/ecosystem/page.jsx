@@ -27,10 +27,10 @@ export default function EcosystemPage() {
           <div className="row g-4">
             <div className="col-md-6 col-lg-3">
               <div className="card card-dark p-4 rounded-3 h-100">
-                <div className="mb-3" style={{ height: '32px' }}>
-                  <Image src="/images/xibit.webp" alt="Xibit" width={100} height={32} style={{ objectFit: 'contain' }} />
+                <div className="mb-3" style={{ height: '36px' }}>
+                  <Image src="/images/xibit.webp" alt="Xibit" width={100} height={36} style={{ objectFit: 'contain' }} />
                 </div>
-                <p className="text-muted-light small mb-3">AI-enhanced discovery platform using HOST for fulfillment</p>
+                <p className="text-muted-light small mb-3"><strong className="text-white">Xibit:</strong> AI infrastructure for global art economy</p>
                 <a href="https://xibit.app" target="_blank" rel="noopener noreferrer" className="text-vtru-green">
                   Visit xibit.app →
                 </a>
@@ -38,10 +38,10 @@ export default function EcosystemPage() {
             </div>
             <div className="col-md-6 col-lg-3">
               <div className="card card-dark p-4 rounded-3 h-100">
-                <div className="mb-3" style={{ height: '32px' }}>
-                  <Image src="/images/yieldable.svg" alt="Yieldable" width={100} height={32} style={{ objectFit: 'contain' }} />
+                <div className="mb-3" style={{ height: '36px' }}>
+                  <Image src="/images/yieldable.svg" alt="Yieldable" width={140} height={44} style={{ objectFit: 'contain' }} />
                 </div>
-                <p className="text-muted-light small mb-3">DeFi using CompoundInterest precompile</p>
+                <p className="text-muted-light small mb-3"><strong className="text-white">Yieldable:</strong> Smart contract-powered income platform</p>
                 <a href="https://yieldable.finance" target="_blank" rel="noopener noreferrer" className="text-vtru-green">
                   Visit yieldable.finance →
                 </a>
@@ -49,19 +49,19 @@ export default function EcosystemPage() {
             </div>
             <div className="col-md-6 col-lg-3">
               <div className="card card-dark p-4 rounded-3 h-100">
-                <div className="mb-3" style={{ height: '32px' }}>
-                  <Image src="/images/pretrend.png" alt="Pretrend" width={100} height={32} style={{ objectFit: 'contain' }} />
+                <div className="mb-3" style={{ height: '36px' }}>
+                  <Image src="/images/pretrend.png" alt="Pretrend" width={36} height={36} style={{ objectFit: 'contain' }} />
                 </div>
-                <p className="text-muted-light small mb-3">Prediction marketplace for trends</p>
+                <p className="text-muted-light small mb-3"><strong className="text-white">Pretrend:</strong> Prediction marketplace for trends</p>
                 <span className="badge bg-secondary">Coming Soon</span>
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
               <div className="card card-dark p-4 rounded-3 h-100">
-                <div className="mb-3" style={{ height: '32px' }}>
-                  <Image src="/images/appvinci-white.png" alt="AppVinci" width={100} height={32} style={{ objectFit: 'contain' }} />
+                <div className="mb-3" style={{ height: '36px' }}>
+                  <Image src="/images/appvinci-white.png" alt="AppVinci" width={36} height={36} style={{ objectFit: 'contain' }} />
                 </div>
-                <p className="text-muted-light small mb-3">Multi-application hub for Vitruveo</p>
+                <p className="text-muted-light small mb-3"><strong className="text-white">AppVinci:</strong> Multi-application hub for Vitruveo</p>
                 <span className="badge bg-secondary">Coming Soon</span>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function EcosystemPage() {
           <h2 className="text-white mb-4">Infrastructure</h2>
           <div className="row g-4">
             {[
-              ['Scope', 'Native DEX', 'https://scope.vitruveo.ai'],
+              ['Scope', 'The focal point for your Vitruveo assets', 'https://scope.vitruveo.ai'],
               ['Explorer', 'Block explorer', 'https://explorer.vitruveo.ai'],
               ['AI Chat', 'Ask Vitruveo AI', '/chat'],
             ].map(([title, desc, href]) => (
