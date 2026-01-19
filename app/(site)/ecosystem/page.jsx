@@ -20,8 +20,17 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* Featured Apps */}
+      {/* Intro */}
       <section className="section-dark py-5">
+        <div className="container">
+          <p className="text-muted-light mb-0" style={{ fontSize: '1.25rem', lineHeight: '1.8' }}>
+            Vitruveo has evolved from its genesis in arts and entertainment into a premier destination for building AI-centric applications. Unlike standard Web3 models that force rigid workflows, our HTTP Outbound Service Trigger (HOST) enables protocol smart contracts to interact seamlessly with existing Web2 hooks. This developer-first ecosystem includes a Model Context Protocol (MCP) server and an integrated AI chat to make blockchain information accessible and effortless.
+          </p>
+        </div>
+      </section>
+
+      {/* Featured Apps */}
+      <section className="section-dark-2 py-5">
         <div className="container">
           <h2 className="text-white mb-4">Featured Apps</h2>
           <div className="row g-4">
@@ -70,7 +79,7 @@ export default function EcosystemPage() {
       </section>
 
       {/* Infrastructure */}
-      <section className="section-dark-2 py-5">
+      <section className="section-dark py-5">
         <div className="container">
           <h2 className="text-white mb-4">Infrastructure</h2>
           <div className="row g-4">

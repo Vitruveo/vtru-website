@@ -56,9 +56,7 @@ const receipt = await tx.wait();
 console.log("Request ID:", receipt.events[0].args.requestId);`;
 
   return (
-    <div className="border-top border-secondary pt-5 mt-5">
-      <h3 className="text-white mb-4">Try It: Create a HOST Request</h3>
-
+    <div className="mb-5">
       <div className="card card-dark p-4 rounded-3 mb-4">
         <div className="mb-3">
           <label className="form-label text-white">Validator Address</label>

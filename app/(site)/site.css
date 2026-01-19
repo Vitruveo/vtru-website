@@ -596,3 +596,48 @@ footer a:hover {
 .bg-vtru-green {
   background-color: var(--vtru-green) !important;
 }
+
+/* PSC Tiles */
+.psc-tile {
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.psc-tile:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.psc-icon {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.psc-category-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.psc-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.psc-address-copy {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s;
+}
+
+.psc-address-copy:hover {
+  color: var(--vtru-green);
+}

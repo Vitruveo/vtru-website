@@ -115,9 +115,7 @@ contract CardGame {
 }`;
 
   return (
-    <div className="border-top border-secondary pt-5 mt-5">
-      <h3 className="text-white mb-4">Try It: Shuffle a Deck</h3>
-
+    <div className="mb-5">
       {/* Tabs */}
       <ul className="nav nav-tabs mb-4">
         <li className="nav-item">

@@ -1,32 +1,8 @@
 'use client';
 
-import { PSC_ADDRESSES, PSC_GAS } from '../../lib/psc-constants';
-
 export function CompoundInterestInfo() {
   return (
     <div className="mb-5">
-      <div className="d-flex flex-wrap gap-3 mb-4">
-        <div className="psc-badge">
-          <span className="label">Address</span>
-          <code>{PSC_ADDRESSES.COMPOUND_INTEREST}</code>
-        </div>
-        <div className="psc-badge">
-          <span className="label">Gas</span>
-          <code>{PSC_GAS.COMPOUND_INTEREST.base}+</code>
-        </div>
-      </div>
-
-      <h1 className="display-5 fw-bold text-white mb-2">CompoundInterest</h1>
-      <p className="lead text-muted-light mb-5">High-Precision Interest Calculation</p>
-
-      <section className="mb-5">
-        <h3 className="text-vtru-green mb-3">What It Does</h3>
-        <p className="text-muted-light">
-          Calculates compound interest with 18-decimal precision using binary
-          exponentiation. Exact DeFi calculations without expensive Solidity math.
-        </p>
-      </section>
-
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">Why It Matters</h3>
         <p className="text-muted-light">

@@ -1,32 +1,8 @@
 'use client';
 
-import { PSC_ADDRESSES, PSC_GAS } from '../../lib/psc-constants';
-
 export function RngInfo() {
   return (
     <div className="mb-5">
-      <div className="d-flex flex-wrap gap-3 mb-4">
-        <div className="psc-badge">
-          <span className="label">Address</span>
-          <code>{PSC_ADDRESSES.RNG}</code>
-        </div>
-        <div className="psc-badge">
-          <span className="label">Gas</span>
-          <code>{PSC_GAS.RNG.base.toLocaleString()}</code>
-        </div>
-      </div>
-
-      <h1 className="display-5 fw-bold text-white mb-2">Random Number Generator</h1>
-      <p className="lead text-muted-light mb-5">Protocol-level entropy for games, mints, and selection</p>
-
-      <section className="mb-5">
-        <h3 className="text-vtru-green mb-3">What It Does</h3>
-        <p className="text-muted-light">
-          Generates 256-bit pseudo-random numbers from protocol-generated seed combined with
-          optional caller-provided salt. Fast, cheap randomness for games, mints, and selection.
-        </p>
-      </section>
-
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">Why It Matters</h3>
         <p className="text-muted-light">

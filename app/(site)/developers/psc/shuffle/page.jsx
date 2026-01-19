@@ -1,5 +1,6 @@
-import { ShuffleInfo } from '@/vitruveo/components/shuffle/shuffle-info';
+import { ShuffleHeader } from '@/vitruveo/components/shuffle/shuffle-header';
 import { ShuffleExample } from '@/vitruveo/components/shuffle/shuffle-example';
+import { ShuffleInfo } from '@/vitruveo/components/shuffle/shuffle-info';
 
 export const metadata = {
   title: 'Shuffle - Protocol Smart Contracts - Vitruveo',
@@ -9,8 +10,9 @@ export const metadata = {
 export default function ShufflePage() {
   return (
     <div className="container py-4">
-      <ShuffleInfo />
+      <ShuffleHeader />
       <ShuffleExample />
+      <ShuffleInfo />
     </div>
   );
 }

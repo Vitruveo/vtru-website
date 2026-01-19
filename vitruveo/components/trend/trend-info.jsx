@@ -1,33 +1,8 @@
 'use client';
 
-import { PSC_ADDRESSES, PSC_GAS } from '../../lib/psc-constants';
-
 export function TrendInfo() {
   return (
     <div className="mb-5">
-      <div className="d-flex flex-wrap gap-3 mb-4">
-        <div className="psc-badge">
-          <span className="label">Address</span>
-          <code>{PSC_ADDRESSES.TREND}</code>
-        </div>
-        <div className="psc-badge">
-          <span className="label">Gas</span>
-          <code>{PSC_GAS.TREND.perByte}/byte</code>
-        </div>
-      </div>
-
-      <h1 className="display-5 fw-bold text-white mb-2">Trend</h1>
-      <p className="lead text-muted-light mb-5">Statistical Analysis & Regression</p>
-
-      <section className="mb-5">
-        <h3 className="text-vtru-green mb-3">What It Does</h3>
-        <p className="text-muted-light">
-          Performs Ordinary Least Squares regression and volatility analysis on
-          time-series data. Calculates slope, R^2 confidence, and volatility metrics
-          at the protocol level.
-        </p>
-      </section>
-
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">Why It Matters</h3>
         <p className="text-muted-light">
