@@ -3,6 +3,7 @@
 import type { UseChatHelpers } from "@ai-sdk/react";
 import { useEffect, useState } from "react";
 import type { ChatMessage } from "@/lib/types";
+import questions from "@/lib/questions.json";
 
 interface QuickStartProps {
   sendMessage: UseChatHelpers<ChatMessage>["sendMessage"];
@@ -11,25 +12,11 @@ interface QuickStartProps {
 const categories = [
   {
     title: "Vitruveo Blockchain",
-    questions: [
-      "What is the current block number?",
-      "What are the Vitruveo core contracts?",
-      "How do I add Vitruveo to MetaMask?",
-      "What is the VTRU token?",
-      "What are Protocol Smart Contracts (PSCs)?",
-      "How does the HOST protocol work?",
-    ],
+    questions: questions.blockchain,
   },
   {
     title: "Vitruveo Website",
-    questions: [
-      "What is Vitruveo?",
-      "What makes Vitruveo an 'Active Blockchain'?",
-      "How can I explore the ecosystem?",
-      "What developer tools are available?",
-      "How do I use the RNG precompile?",
-      "What is the Passkey precompile for?",
-    ],
+    questions: questions.website,
   },
 ];
 

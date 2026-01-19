@@ -55,12 +55,12 @@ Explorer: https://explorer.vitruveo.ai`}</pre>
           <div className="row g-3 mb-4">
             <div className="col-md-6">
               {[
-                ['HOST', 'Trigger webhooks'],
-                ['Passkey', 'Verify WebAuthn signatures'],
+                ['HOST', 'Trigger AI agents'],
+                ['Trend', 'Statistical analysis'],
                 ['RNG', 'Generate randomness'],
                 ['Shuffle', 'Cryptographic card shuffle'],
-                ['Trend', 'Statistical analysis'],
-                ['IBC', 'Cosmos interoperability'],
+                ['CompoundInterest', 'DeFi math'],
+                ['Passkey', 'Verify WebAuthn signatures'],
               ].map(([name, desc]) => (
                 <div key={name} className="card card-dark p-3 rounded-2 mb-2">
                   <div className="d-flex align-items-center gap-3">
@@ -72,12 +72,12 @@ Explorer: https://explorer.vitruveo.ai`}</pre>
             </div>
             <div className="col-md-6">
               {[
+                ['MerkleProof', 'Proof verification'],
+                ['IBC', 'Cosmos interoperability'],
                 ['BatchBalance', 'Query multiple balances'],
                 ['BatchBalanceNative', 'Native + ERC20 balances'],
                 ['BatchSendERC20', 'Multi-recipient tokens'],
                 ['BatchSendNative', 'Multi-recipient VTRU'],
-                ['CompoundInterest', 'DeFi math'],
-                ['MerkleProof', 'Proof verification'],
               ].map(([name, desc]) => (
                 <div key={name} className="card card-dark p-3 rounded-2 mb-2">
                   <div className="d-flex align-items-center gap-3">

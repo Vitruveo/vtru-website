@@ -7,7 +7,9 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="section-dark-2 py-5">
+      <section className="hero-gradient">
+        <div className="hero-orb hero-orb-1"></div>
+        <div className="hero-orb hero-orb-2"></div>
         <div className="container py-5">
           <h1 className="display-4 fw-bold text-white mb-4">Building the Active Blockchain</h1>
         </div>

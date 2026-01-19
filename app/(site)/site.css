@@ -193,6 +193,108 @@ body {
   z-index: 2;
 }
 
+/* Gradient Hero for non-video pages */
+.hero-gradient {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1a0a 0%, #0d1f0d 50%, #0a150a 100%);
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(161, 255, 117, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 50% at 80% 60%, rgba(74, 222, 128, 0.15) 0%, transparent 50%);
+  animation: gradientPulse 8s ease-in-out infinite;
+}
+
+.hero-gradient::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 30% 70%, rgba(161, 255, 117, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 70% 30%, rgba(161, 255, 117, 0.06) 0%, transparent 30%);
+  animation: gradientDrift 20s linear infinite;
+}
+
+.hero-gradient .container {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradientPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes gradientDrift {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Floating orb decoration */
+.hero-gradient .hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.7;
+  animation: orbFloat 6s ease-in-out infinite;
+}
+
+.hero-gradient .hero-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(161, 255, 117, 0.25);
+  top: 5%;
+  right: 5%;
+  animation-delay: 0s;
+}
+
+.hero-gradient .hero-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(74, 222, 128, 0.2);
+  bottom: 10%;
+  left: 5%;
+  animation-delay: -3s;
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-gradient {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+}
+
 /* Sections */
 .section-dark {
   background-color: var(--vtru-dark);
@@ -315,4 +417,139 @@ footer a:hover {
 
 .psc-badge code {
   color: var(--vtru-green);
+}
+
+/* Hero Chat */
+.hero-chat {
+  margin-top: 2.5rem;
+  max-width: 600px;
+}
+
+.hero-chat-label {
+  font-size: 0.875rem;
+  color: var(--vtru-green);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.hero-chat-form {
+  display: flex;
+  background-color: rgba(26, 26, 26, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero-chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.hero-chat-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.hero-chat-submit {
+  background-color: var(--vtru-green);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.hero-chat-submit:hover {
+  background-color: var(--vtru-green-dark);
+}
+
+.hero-chat-submit svg {
+  color: #000;
+}
+
+.hero-chat-suggestion {
+  display: block;
+  margin-top: 0.75rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.hero-chat-suggestion:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-chat-question {
+  color: var(--vtru-green);
+  font-style: italic;
+}
+
+/* HOST Primer Button - Gradient Style */
+.btn-host-primer {
+  background: linear-gradient(135deg, var(--vtru-green) 0%, #4ade80 50%, #22c55e 100%);
+  border: none;
+  color: #000 !important;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(161, 255, 117, 0.3);
+}
+
+.btn-host-primer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(161, 255, 117, 0.4);
+  color: #000 !important;
+}
+
+.btn-host-primer svg {
+  flex-shrink: 0;
+}
+
+/* Smaller variant for inline use */
+.btn-host-primer-sm {
+  background: linear-gradient(135deg, var(--vtru-green) 0%, #4ade80 50%, #22c55e 100%);
+  border: none;
+  color: #000 !important;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(161, 255, 117, 0.2);
+}
+
+.btn-host-primer-sm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(161, 255, 117, 0.3);
+  color: #000 !important;
+}
+
+/* Background utility for green */
+.bg-vtru-green {
+  background-color: var(--vtru-green) !important;
 }

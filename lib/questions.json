@@ -1,0 +1,26 @@
+{
+  "blockchain": [
+    "What is the current block number?",
+    "What are the Vitruveo core contracts?",
+    "How do I add Vitruveo to MetaMask?",
+    "What is the VTRU token?",
+    "What are Protocol Smart Contracts (PSCs)?",
+    "How does the HOST protocol work?",
+    "What is the current gas price?",
+    "How do I bridge assets to Vitruveo?",
+    "What is the RNG precompile?",
+    "How does the Passkey precompile work?"
+  ],
+  "website": [
+    "What is Vitruveo?",
+    "What makes Vitruveo an 'Active Blockchain'?",
+    "How can I explore the ecosystem?",
+    "What developer tools are available?",
+    "What is the Shuffle precompile for?",
+    "How do batch operations work?",
+    "What is the Trend precompile?",
+    "How does IBC integration work?",
+    "What is compound interest calculation?",
+    "How do I verify Merkle proofs?"
+  ]
+}
