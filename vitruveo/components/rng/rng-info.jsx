@@ -16,8 +16,8 @@ export function RngInfo() {
         </div>
       </div>
 
-      <h1 className="display-5 fw-bold text-white mb-2">RNG</h1>
-      <p className="lead text-muted-light mb-5">Random Number Generation</p>
+      <h1 className="display-5 fw-bold text-white mb-2">Random Number Generator</h1>
+      <p className="lead text-muted-light mb-5">Protocol-level entropy for games, mints, and selection</p>
 
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">What It Does</h3>

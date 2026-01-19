@@ -3,18 +3,18 @@
 import { usePathname, useRouter } from 'next/navigation';
 
 const PSC_LIST = [
-  { name: 'HOST', slug: 'host' },
+  { name: 'HTTP Outbound Service Trigger', slug: 'host' },
   { name: 'Trend', slug: 'trend' },
-  { name: 'RNG', slug: 'rng' },
+  { name: 'Random Number Generator', slug: 'rng' },
   { name: 'Shuffle', slug: 'shuffle' },
-  { name: 'CompoundInterest', slug: 'compound-interest' },
+  { name: 'Compound Interest', slug: 'compound-interest' },
   { name: 'Passkey', slug: 'passkey' },
-  { name: 'MerkleProof', slug: 'merkle-proof' },
-  { name: 'IBC', slug: 'ibc' },
-  { name: 'BatchBalance', slug: 'batch-balance' },
-  { name: 'BatchBalanceNative', slug: 'batch-balance-native' },
-  { name: 'BatchSendERC20', slug: 'batch-send-erc20' },
-  { name: 'BatchSendNative', slug: 'batch-send-native' },
+  { name: 'Merkle Proof', slug: 'merkle-proof' },
+  { name: 'Inter-Blockchain Communication', slug: 'ibc' },
+  { name: 'Batch Balance', slug: 'batch-balance' },
+  { name: 'Batch Balance Native', slug: 'batch-balance-native' },
+  { name: 'Batch Send ERC20', slug: 'batch-send-erc20' },
+  { name: 'Batch Send Native', slug: 'batch-send-native' },
 ];
 
 export default function PSCLayout({ children }) {

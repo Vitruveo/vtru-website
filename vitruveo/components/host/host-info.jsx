@@ -21,8 +21,8 @@ export function HostInfo() {
         </div>
       </div>
 
-      <h1 className="display-5 fw-bold text-white mb-2">HOST</h1>
-      <p className="lead text-muted-light mb-4">HTTP Outbound Service Trigger</p>
+      <h1 className="display-5 fw-bold text-white mb-2">HTTP Outbound Service Trigger</h1>
+      <p className="lead text-muted-light mb-4">Smart contracts invoke AI agents and agentic workflows</p>
 
       {/* HOST Primer CTA */}
       <div className="mb-5">

@@ -16,8 +16,8 @@ export function IbcInfo() {
         </div>
       </div>
 
-      <h1 className="display-5 fw-bold text-white mb-2">IBC</h1>
-      <p className="lead text-muted-light mb-5">Cosmos Light Client Verification</p>
+      <h1 className="display-5 fw-bold text-white mb-2">Inter-Blockchain Communication</h1>
+      <p className="lead text-muted-light mb-5">Cosmos light client verification</p>
 
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">What It Does</h3>

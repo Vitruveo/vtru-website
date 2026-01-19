@@ -10,14 +10,14 @@ export const metadata = {
 };
 
 const pscList = [
-  { name: 'HOST', slug: 'host', address: PSC_ADDRESSES.HOST, gas: '25K+', category: 'Agentic', description: 'Trigger AI agents' },
+  { name: 'HTTP Outbound Service Trigger', slug: 'host', address: PSC_ADDRESSES.HOST, gas: '25K+', category: 'Agentic', description: 'Trigger AI agents' },
   { name: 'Trend', slug: 'trend', address: PSC_ADDRESSES.TREND, gas: '20/byte', category: 'Analysis', description: 'OLS regression + volatility' },
-  { name: 'RNG', slug: 'rng', address: PSC_ADDRESSES.RNG, gas: '500', category: 'Randomness', description: 'Random number generation' },
+  { name: 'Random Number Generator', slug: 'rng', address: PSC_ADDRESSES.RNG, gas: '500', category: 'Randomness', description: 'Random number generation' },
   { name: 'Shuffle', slug: 'shuffle', address: PSC_ADDRESSES.SHUFFLE, gas: '5K', category: 'Randomness', description: 'Cryptographic card shuffle' },
   { name: 'CompoundInterest', slug: 'compound-interest', address: PSC_ADDRESSES.COMPOUND_INTEREST, gas: '500+', category: 'Math', description: 'Calculate compound interest' },
   { name: 'Passkey', slug: 'passkey', address: PSC_ADDRESSES.PASSKEY, gas: '3.4K', category: 'Authentication', description: 'WebAuthn/P-256 verification' },
   { name: 'MerkleProof', slug: 'merkle-proof', address: PSC_ADDRESSES.MERKLE_PROOF, gas: '1K+50/hash', category: 'Verification', description: 'Verify Merkle proofs' },
-  { name: 'IBC', slug: 'ibc', address: PSC_ADDRESSES.IBC, gas: '3K-200K+', category: 'Interoperability', description: 'Cosmos light client' },
+  { name: 'Inter-Blockchain Communication', slug: 'ibc', address: PSC_ADDRESSES.IBC, gas: '3K-200K+', category: 'Interoperability', description: 'Cosmos light client' },
   { name: 'BatchBalance', slug: 'batch-balance', address: PSC_ADDRESSES.BATCH_BALANCE, gas: '100+30K/token', category: 'Batching', description: 'Query ERC20 balances' },
   { name: 'BatchBalanceNative', slug: 'batch-balance-native', address: PSC_ADDRESSES.BATCH_BALANCE_NATIVE, gas: '100+30K/token', category: 'Batching', description: 'Query native + ERC20 balances' },
   { name: 'BatchSendERC20', slug: 'batch-send-erc20', address: PSC_ADDRESSES.BATCH_SEND_ERC20, gas: '200+50K/tx', category: 'Batching', description: 'Multi-recipient token transfer' },
@@ -124,7 +124,7 @@ const result = await provider.call({
               <div className="card card-dark p-4 rounded-3 h-100">
                 <h5 className="text-vtru-green mb-3">Agentic</h5>
                 <ul className="list-unstyled mb-0">
-                  <li><Link href="/developers/psc/host" className="text-muted-light">HOST</Link></li>
+                  <li><Link href="/developers/psc/host" className="text-muted-light">HTTP Outbound Service Trigger</Link></li>
                 </ul>
               </div>
             </div>
@@ -140,7 +140,7 @@ const result = await provider.call({
               <div className="card card-dark p-4 rounded-3 h-100">
                 <h5 className="text-vtru-green mb-3">Randomness</h5>
                 <ul className="list-unstyled mb-0">
-                  <li><Link href="/developers/psc/rng" className="text-muted-light">RNG</Link></li>
+                  <li><Link href="/developers/psc/rng" className="text-muted-light">Random Number Generator</Link></li>
                   <li><Link href="/developers/psc/shuffle" className="text-muted-light">Shuffle</Link></li>
                 </ul>
               </div>
@@ -159,7 +159,7 @@ const result = await provider.call({
               <div className="card card-dark p-4 rounded-3 h-100">
                 <h5 className="text-vtru-green mb-3">Interoperability</h5>
                 <ul className="list-unstyled mb-0">
-                  <li><Link href="/developers/psc/ibc" className="text-muted-light">IBC</Link></li>
+                  <li><Link href="/developers/psc/ibc" className="text-muted-light">Inter-Blockchain Communication</Link></li>
                 </ul>
               </div>
             </div>
