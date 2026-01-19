@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata = {
@@ -24,31 +25,44 @@ export default function EcosystemPage() {
         <div className="container">
           <h2 className="text-white mb-4">Featured Apps</h2>
           <div className="row g-4">
-            <div className="col-md-4">
+            <div className="col-md-6 col-lg-3">
               <div className="card card-dark p-4 rounded-3 h-100">
-                <h4 className="text-white mb-2">Xibit</h4>
+                <div className="mb-3" style={{ height: '32px' }}>
+                  <Image src="/images/xibit.webp" alt="Xibit" width={100} height={32} style={{ objectFit: 'contain' }} />
+                </div>
                 <p className="text-muted-light small mb-3">AI-enhanced discovery platform using HOST for fulfillment</p>
                 <a href="https://xibit.app" target="_blank" rel="noopener noreferrer" className="text-vtru-green">
                   Visit xibit.app →
                 </a>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-6 col-lg-3">
               <div className="card card-dark p-4 rounded-3 h-100">
-                <h4 className="text-white mb-2">Hashdle</h4>
-                <p className="text-muted-light small mb-3">Word game using RNG for fair gameplay</p>
-                <a href="https://hashdle.com" target="_blank" rel="noopener noreferrer" className="text-vtru-green">
-                  Visit hashdle.com →
-                </a>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card card-dark p-4 rounded-3 h-100">
-                <h4 className="text-white mb-2">Yieldable</h4>
+                <div className="mb-3" style={{ height: '32px' }}>
+                  <Image src="/images/yieldable.svg" alt="Yieldable" width={100} height={32} style={{ objectFit: 'contain' }} />
+                </div>
                 <p className="text-muted-light small mb-3">DeFi using CompoundInterest precompile</p>
                 <a href="https://yieldable.finance" target="_blank" rel="noopener noreferrer" className="text-vtru-green">
                   Visit yieldable.finance →
                 </a>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="card card-dark p-4 rounded-3 h-100">
+                <div className="mb-3" style={{ height: '32px' }}>
+                  <Image src="/images/pretrend.png" alt="Pretrend" width={100} height={32} style={{ objectFit: 'contain' }} />
+                </div>
+                <p className="text-muted-light small mb-3">Prediction marketplace for trends</p>
+                <span className="badge bg-secondary">Coming Soon</span>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <div className="card card-dark p-4 rounded-3 h-100">
+                <div className="mb-3" style={{ height: '32px' }}>
+                  <Image src="/images/appvinci-white.png" alt="AppVinci" width={100} height={32} style={{ objectFit: 'contain' }} />
+                </div>
+                <p className="text-muted-light small mb-3">Multi-application hub for Vitruveo</p>
+                <span className="badge bg-secondary">Coming Soon</span>
               </div>
             </div>
           </div>
@@ -62,11 +76,10 @@ export default function EcosystemPage() {
           <div className="row g-4">
             {[
               ['Scope', 'Native DEX', 'https://scope.vitruveo.ai'],
-              ['Bridge', 'Cross-chain transfers', 'https://bridge.vitruveo.ai'],
               ['Explorer', 'Block explorer', 'https://explorer.vitruveo.ai'],
               ['AI Chat', 'Ask Vitruveo AI', '/chat'],
             ].map(([title, desc, href]) => (
-              <div key={title} className="col-sm-6 col-lg-3">
+              <div key={title} className="col-sm-6 col-lg-4">
                 <div className="card card-dark p-4 rounded-3 h-100 text-center">
                   <h4 className="text-white mb-2">{title}</h4>
                   <p className="text-muted-light small mb-3">{desc}</p>
