@@ -320,7 +320,7 @@ body {
 }
 
 .text-muted-light {
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 /* Code blocks */

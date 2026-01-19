@@ -21,12 +21,6 @@ function parseShuffleResponse(hexData) {
   return cards;
 }
 
-// Generate a random salt
-function generateSalt() {
-  const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
-  return '0x' + Array.from(array).map(b => b.toString(16).padStart(2, '0')).join('');
-}
 
 export function ShuffleExample() {
   const [activeTab, setActiveTab] = useState('demo');
@@ -39,8 +33,6 @@ export function ShuffleExample() {
     setError(null);
 
     try {
-      const salt = generateSalt();
-
       const response = await fetch(NETWORK_CONFIG.rpc, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -50,7 +42,7 @@ export function ShuffleExample() {
           method: 'eth_call',
           params: [{
             to: PSC_ADDRESSES.SHUFFLE,
-            data: salt
+            data: '0x'
           }, 'latest']
         })
       });
@@ -74,10 +66,6 @@ export function ShuffleExample() {
 const RPC = '${NETWORK_CONFIG.rpc}';
 const SHUFFLE_ADDRESS = '${PSC_ADDRESSES.SHUFFLE}';
 
-// Generate random salt
-const salt = '0x' + [...crypto.getRandomValues(new Uint8Array(32))]
-  .map(b => b.toString(16).padStart(2, '0')).join('');
-
 // Call the Shuffle precompile
 const response = await fetch(RPC, {
   method: 'POST',
@@ -86,7 +74,7 @@ const response = await fetch(RPC, {
     jsonrpc: '2.0',
     id: 1,
     method: 'eth_call',
-    params: [{ to: SHUFFLE_ADDRESS, data: salt }, 'latest']
+    params: [{ to: SHUFFLE_ADDRESS, data: '0x' }, 'latest']
   })
 });
 
@@ -187,19 +175,17 @@ contract CardGame {
             <div className="alert alert-danger">{error}</div>
           )}
 
-          {cards.length > 0 && (
-            <div className="card-grid">
-              {cards.map((card, idx) => (
-                <div key={idx} className="playing-card">
-                  <img
-                    src={`/vitruveo/images/cards/${card}.svg`}
-                    alt={card}
-                    title={card}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="card-grid">
+            {cards.map((card, idx) => (
+              <div key={idx} className="playing-card">
+                <img
+                  src={`/vitruveo/images/cards/${card}.svg`}
+                  alt={card}
+                  title={card}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
@@ -230,6 +216,8 @@ contract CardGame {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem;
+          min-height: 200px;
+          margin-bottom: 3rem;
         }
         .playing-card {
           width: 60px;
