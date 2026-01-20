@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 import { createWalletClient, createPublicClient, http, getAddress } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 
@@ -15,6 +16,9 @@ const vitruveoChain = {
 // Parse 104-byte hex response into array of 52 card codes
 function parseShuffleResponse(hexData) {
   const hex = hexData.startsWith('0x') ? hexData.slice(2) : hexData;
+  if (hex.length < 4) {
+    return [];
+  }
   const cards = [];
   for (let i = 0; i < hex.length; i += 4) {
     const suit = String.fromCharCode(parseInt(hex.slice(i, i + 2), 16));
@@ -29,7 +33,7 @@ export async function POST(request) {
     const privateKey = process.env.PSC_DEMO_PRIVATE_KEY;
 
     if (!privateKey) {
-      return Response.json(
+      return NextResponse.json(
         { error: 'PSC_DEMO_PRIVATE_KEY not configured' },
         { status: 500 }
       );
@@ -81,7 +85,7 @@ export async function POST(request) {
     const receipt = await publicClient.waitForTransactionReceipt({ hash });
 
     if (receipt.status !== 'success') {
-      return Response.json(
+      return NextResponse.json(
         { error: 'Transaction failed' },
         { status: 500 }
       );
@@ -94,16 +98,16 @@ export async function POST(request) {
       data: salt
     });
 
-    if (!result.data) {
-      return Response.json(
-        { error: 'Shuffle call returned no data' },
+    if (!result.data || result.data === '0x') {
+      return NextResponse.json(
+        { error: 'Shuffle precompile returned no data' },
         { status: 500 }
       );
     }
 
     const cards = parseShuffleResponse(result.data);
 
-    return Response.json({
+    return NextResponse.json({
       success: true,
       txHash: hash,
       cards,
@@ -113,8 +117,8 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('Shuffle API error:', error);
-    return Response.json(
-      { error: error.message || 'Shuffle failed' },
+    return NextResponse.json(
+      { error: error?.message || 'Shuffle failed' },
       { status: 500 }
     );
   }

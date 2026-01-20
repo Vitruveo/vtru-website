@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 import { createWalletClient, createPublicClient, http, getAddress } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 
@@ -15,6 +16,9 @@ const vitruveoChain = {
 // Decode ABI encoded uint256[] array
 function decodeUint256Array(hexResult) {
   const hex = hexResult.startsWith('0x') ? hexResult.slice(2) : hexResult;
+  if (hex.length < 128) {
+    return [];
+  }
   const length = parseInt(hex.slice(64, 128), 16);
   const values = [];
   for (let i = 0; i < length; i++) {
@@ -30,7 +34,7 @@ export async function POST(request) {
     const privateKey = process.env.PSC_DEMO_PRIVATE_KEY;
 
     if (!privateKey) {
-      return Response.json(
+      return NextResponse.json(
         { error: 'PSC_DEMO_PRIVATE_KEY not configured' },
         { status: 500 }
       );
@@ -85,7 +89,7 @@ export async function POST(request) {
     const receipt = await publicClient.waitForTransactionReceipt({ hash });
 
     if (receipt.status !== 'success') {
-      return Response.json(
+      return NextResponse.json(
         { error: 'Transaction failed' },
         { status: 500 }
       );
@@ -98,16 +102,16 @@ export async function POST(request) {
       data
     });
 
-    if (!result.data) {
-      return Response.json(
-        { error: 'RNG call returned no data' },
+    if (!result.data || result.data === '0x') {
+      return NextResponse.json(
+        { error: 'RNG precompile returned no data' },
         { status: 500 }
       );
     }
 
     const randomValues = decodeUint256Array(result.data);
 
-    return Response.json({
+    return NextResponse.json({
       success: true,
       txHash: hash,
       values: randomValues,
@@ -118,8 +122,8 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('RNG API error:', error);
-    return Response.json(
-      { error: error.message || 'RNG failed' },
+    return NextResponse.json(
+      { error: error?.message || 'RNG failed' },
       { status: 500 }
     );
   }
