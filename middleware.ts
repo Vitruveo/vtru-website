@@ -1,14 +1,22 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+const CANONICAL_HOST = "www.vitruveo.ai";
+const REDIRECT_HOSTS = [
+  "vitruveo.net",
+  "www.vitruveo.net",
+  "vitruveo.xyz",
+  "www.vitruveo.xyz",
+  "vitruveo.ai", // non-www to www
+];
 
-  /*
-   * Playwright starts the dev server and requires a 200 status to
-   * begin the tests, so this ensures that the tests can start
-   */
-  if (pathname.startsWith("/ping")) {
-    return new Response("pong", { status: 200 });
+export async function middleware(request: NextRequest) {
+  const { pathname, search } = request.nextUrl;
+  const host = request.headers.get("host") || "";
+
+  // Redirect non-canonical domains to canonical
+  if (REDIRECT_HOSTS.includes(host)) {
+    const url = new URL(`https://${CANONICAL_HOST}${pathname}${search}`);
+    return NextResponse.redirect(url, 301);
   }
 
   return NextResponse.next();
@@ -16,7 +24,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/ping",
     /*
      * Match all request paths except for the ones starting with:
      * - _next/static (static files)
