@@ -29,8 +29,31 @@ export default function EcosystemPage() {
         </div>
       </section>
 
-      {/* Featured Apps */}
+      {/* Xibit AI Feature */}
       <section className="section-dark-2 py-5">
+        <div className="container">
+          <div className="row align-items-center g-4">
+            <div className="col-lg-6">
+              <p className="text-muted-light mb-0" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                <strong className="text-white">Xibit</strong> is actively leveraging Vitruveo's new Protocol Smart Contract capabilities to introduce powerful AI features into its platform. By integrating with HOST, Xibit will enable smart contracts to trigger AI-driven workflows—from intelligent art curation and recommendation engines to automated licensing and royalty distribution powered by on-chain logic and off-chain intelligence.
+              </p>
+            </div>
+            <div className="col-lg-6 d-flex justify-content-center">
+              <div style={{ aspectRatio: '16/9', position: 'relative', width: '50%' }}>
+                <Image
+                  src="/images/xibitai.png"
+                  alt="Xibit AI capabilities"
+                  fill
+                  style={{ objectFit: 'cover', borderRadius: '12px' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Apps */}
+      <section className="section-dark py-5">
         <div className="container">
           <h2 className="text-white mb-4">Featured Apps</h2>
           <div className="row g-4">
