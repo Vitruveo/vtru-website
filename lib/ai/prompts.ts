@@ -1,9 +1,16 @@
 import type { Geo } from "@vercel/functions";
 import generatedContext from "./generated-context.json";
 
+type Page = { path: string; title: string; description: string };
+type PSC = { name: string; slug: string; address: string; description: string; gas: string };
+type Network = { chainId: number; name: string; rpc: string; explorer: string; bridge: string; blockTime: number; gasPrice: number };
+
 // Build prompt dynamically from generated context
 const buildRegularPrompt = () => {
-  const { pages, pscs, mcpTools, network } = generatedContext;
+  const pages = generatedContext.pages as Page[];
+  const pscs = generatedContext.pscs as PSC[];
+  const mcpTools = generatedContext.mcpTools as string[];
+  const network = generatedContext.network as Network;
 
   // Build pages section
   const pagesSection = pages
