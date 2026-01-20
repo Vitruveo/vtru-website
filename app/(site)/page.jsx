@@ -175,7 +175,7 @@ export default function HomePage() {
                   ['Trend', 'Statistical analysis'],
                   ['RNG', 'Random number generation'],
                   ['Shuffle', 'Cryptographic card shuffle'],
-                  ['CompoundInterest', 'DeFi math'],
+                  ['CompoundInterest', 'High-precision DeFi calculations'],
                 ].map(([name, desc]) => (
                   <div key={name} className="col-12">
                     <div className="card card-dark p-3 rounded-2">

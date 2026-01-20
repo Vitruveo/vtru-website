@@ -16,7 +16,7 @@ const pscList = [
   { name: 'Trend', slug: 'trend', address: PSC_ADDRESSES.TREND, description: 'OLS regression + volatility analysis', category: 'Analysis', color: '#60a5fa' },
   { name: 'RNG', slug: 'rng', address: PSC_ADDRESSES.RNG, description: 'Protocol-level random numbers', category: 'Randomness', color: '#f472b6' },
   { name: 'Shuffle', slug: 'shuffle', address: PSC_ADDRESSES.SHUFFLE, description: 'Cryptographic card deck shuffle', category: 'Randomness', color: '#f472b6' },
-  { name: 'Compound Interest', slug: 'compound-interest', address: PSC_ADDRESSES.COMPOUND_INTEREST, description: 'Native exponentiation math', category: 'Math', color: '#fbbf24' },
+  { name: 'Compound Interest', slug: 'compound-interest', address: PSC_ADDRESSES.COMPOUND_INTEREST, description: 'High-precision DeFi calculations', category: 'DeFi', color: '#fbbf24' },
   { name: 'Passkey', slug: 'passkey', address: PSC_ADDRESSES.PASSKEY, description: 'WebAuthn P-256 verification', category: 'Auth', color: '#c084fc' },
   { name: 'Merkle Proof', slug: 'merkle-proof', address: PSC_ADDRESSES.MERKLE_PROOF, description: 'Fast Merkle proof verification', category: 'Verification', color: '#34d399' },
   { name: 'IBC', slug: 'ibc', address: PSC_ADDRESSES.IBC, description: 'Cosmos light client bridge', category: 'Interop', color: '#fb923c' },

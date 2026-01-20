@@ -6,11 +6,34 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ai.vitruveo.ai"),
-  title: "Vitruveo AI",
-  description: "Vitruveo AI chat and MCP server",
+  metadataBase: new URL("https://www.vitruveo.ai"),
+  title: {
+    default: "Vitruveo - The First Active Blockchain",
+    template: "%s - Vitruveo",
+  },
+  description: "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities including AI agent triggers, randomness, and DeFi primitives.",
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Vitruveo",
+    title: "Vitruveo - The First Active Blockchain",
+    description: "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities including AI agent triggers, randomness, and DeFi primitives.",
+    images: [
+      {
+        url: "/images/preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Vitruveo - The First Active Blockchain",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vitruveo - The First Active Blockchain",
+    description: "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities.",
+    images: ["/images/preview.png"],
   },
 };
 

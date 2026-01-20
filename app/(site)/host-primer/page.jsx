@@ -53,9 +53,8 @@ export default function HostPrimerPage() {
               </p>
               <p className="text-muted-light">
                 This is the bridge between on-chain logic and off-chain intelligence. Your Solidity code
-                can trigger LLM inference, spawn multi-step agent workflows, request AI-driven analysis,
-                and receive autonomous decisions—all within the transaction lifecycle. No indexers.
-                No polling. No middleware.
+                can trigger LLM inference, spawn multi-step agent workflows, and initiate AI-driven
+                analysis—all within the transaction lifecycle. No indexers. No polling. No middleware.
               </p>
             </div>
           </div>
@@ -337,7 +336,7 @@ export default function HostPrimerPage() {
                 <li className="mb-2">Your smart contract sends a HOST request to your proxy endpoint</li>
                 <li className="mb-2">Your proxy authenticates the request (verify signature, check request ID on-chain)</li>
                 <li className="mb-2">Your proxy injects API keys and forwards to the actual sensitive endpoint</li>
-                <li>The response flows back through your proxy to your on-chain callback</li>
+                <li>The endpoint processes the request (HOST is fire-and-forget—no response returns to the contract)</li>
               </ol>
             </div>
           </div>
@@ -369,10 +368,10 @@ export default function HostPrimerPage() {
             </div>
             <div className="col-md-6 col-lg-4">
               <div className="card card-dark p-4 rounded-3 h-100">
-                <h5 className="text-vtru-green mb-3">On-Chain Oracles</h5>
+                <h5 className="text-vtru-green mb-3">Event-Driven AI</h5>
                 <p className="text-muted-light mb-0">
-                  AI models analyze real-world data, generate predictions, and feed intelligent
-                  decisions back to contracts. Oracles that think, not just relay.
+                  On-chain events trigger AI analysis pipelines. Smart contracts invoke ML models
+                  to process data, generate predictions, and initiate downstream workflows.
                 </p>
               </div>
             </div>
@@ -380,8 +379,8 @@ export default function HostPrimerPage() {
               <div className="card card-dark p-4 rounded-3 h-100">
                 <h5 className="text-vtru-green mb-3">Generative Content</h5>
                 <p className="text-muted-light mb-0">
-                  NFT mints trigger AI image generation. Game actions spawn dynamic dialogue and
-                  content. Create truly generative on-chain experiences.
+                  NFT mints trigger AI image generation pipelines. Game actions spawn content
+                  creation workflows. On-chain events drive off-chain creative processes.
                 </p>
               </div>
             </div>
@@ -389,8 +388,8 @@ export default function HostPrimerPage() {
               <div className="card card-dark p-4 rounded-3 h-100">
                 <h5 className="text-vtru-green mb-3">AI-Powered DeFi</h5>
                 <p className="text-muted-light mb-0">
-                  ML models predict liquidations, AI optimizes yield strategies, agents rebalance
-                  portfolios on market signals. Finance that thinks for itself.
+                  DeFi events trigger AI analysis—liquidation predictions, yield optimization
+                  calculations, portfolio rebalancing signals sent to off-chain systems.
                 </p>
               </div>
             </div>
@@ -398,8 +397,8 @@ export default function HostPrimerPage() {
               <div className="card card-dark p-4 rounded-3 h-100">
                 <h5 className="text-vtru-green mb-3">Intelligent Automation</h5>
                 <p className="text-muted-light mb-0">
-                  AI agents monitor conditions, make decisions, and trigger actions. From supply
-                  chain to customer service—autonomous systems driven by on-chain events.
+                  On-chain events trigger AI decision pipelines. From supply chain notifications
+                  to customer service workflows—autonomous off-chain processes driven by blockchain state.
                 </p>
               </div>
             </div>
