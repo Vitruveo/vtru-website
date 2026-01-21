@@ -12,7 +12,7 @@ function shortenAddress(address) {
 }
 
 const pscList = [
-  { name: 'HOST', slug: 'host', address: PSC_ADDRESSES.HOST, description: 'Trigger AI agents from contracts', category: 'Agentic', color: '#a1ff75', href: '/host-primer' },
+  { name: 'HOST', slug: 'host', address: PSC_ADDRESSES.HOST, description: 'Trigger AI agents from contracts', category: 'Agentic', color: '#a1ff75', href: '/developers/psc/host' },
   { name: 'Trend', slug: 'trend', address: PSC_ADDRESSES.TREND, description: 'OLS regression + volatility analysis', category: 'Analysis', color: '#60a5fa' },
   { name: 'RNG', slug: 'rng', address: PSC_ADDRESSES.RNG, description: 'Protocol-level random numbers', category: 'Randomness', color: '#f472b6' },
   { name: 'Shuffle', slug: 'shuffle', address: PSC_ADDRESSES.SHUFFLE, description: 'Cryptographic card deck shuffle', category: 'Randomness', color: '#f472b6' },

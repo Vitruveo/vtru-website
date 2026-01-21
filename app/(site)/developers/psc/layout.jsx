@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 
 const PSC_LIST = [
+  { name: 'HTTP Outbound Service Trigger', slug: 'host', href: '/developers/psc/host' },
   { name: 'Trend', slug: 'trend' },
   { name: 'Random Number Generator', slug: 'rng' },
   { name: 'Shuffle', slug: 'shuffle' },
@@ -26,7 +27,8 @@ export default function PSCLayout({ children }) {
   const handleChange = (e) => {
     const slug = e.target.value;
     if (slug) {
-      router.push(`/developers/psc/${slug}`);
+      const psc = PSC_LIST.find(p => p.slug === slug);
+      router.push(psc?.href || `/developers/psc/${slug}`);
     }
   };
 
