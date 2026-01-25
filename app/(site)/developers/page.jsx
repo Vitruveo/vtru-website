@@ -12,7 +12,7 @@ function shortenAddress(address) {
 }
 
 const pscList = [
-  { name: 'HOST', slug: 'host', address: PSC_ADDRESSES.HOST, description: 'Trigger AI agents from contracts', category: 'Agentic', color: '#a1ff75', href: '/developers/psc/host' },
+  { name: 'HOST', slug: 'host', address: PSC_ADDRESSES.HOST, description: 'Trigger AI agents from contracts', category: 'Agentic', color: '#a1ff75', href: '/host' },
   { name: 'Trend', slug: 'trend', address: PSC_ADDRESSES.TREND, description: 'OLS regression + volatility analysis', category: 'Analysis', color: '#60a5fa' },
   { name: 'RNG', slug: 'rng', address: PSC_ADDRESSES.RNG, description: 'Protocol-level random numbers', category: 'Randomness', color: '#f472b6' },
   { name: 'Shuffle', slug: 'shuffle', address: PSC_ADDRESSES.SHUFFLE, description: 'Cryptographic card deck shuffle', category: 'Randomness', color: '#f472b6' },
@@ -159,7 +159,7 @@ const result = await provider.call({
               <div className="card card-dark p-4 rounded-3 h-100">
                 <h5 className="text-vtru-green mb-3">Agentic</h5>
                 <ul className="list-unstyled mb-0">
-                  <li><Link href="/developers/psc/host" className="text-muted-light">HTTP Outbound Service Trigger</Link></li>
+                  <li><Link href="/host" className="text-muted-light">HTTP Outbound Service Trigger</Link></li>
                 </ul>
               </div>
             </div>

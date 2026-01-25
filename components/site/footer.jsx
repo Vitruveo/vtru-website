@@ -17,23 +17,15 @@ export function SiteFooter() {
   };
 
   return (
-    <footer className="py-5">
+    <footer className="py-5" style={{ marginTop: '300px' }}>
       <div className="container">
         <div className="row g-4">
           {/* Brand */}
           <div className="col-lg-3 col-md-6">
-            <Link href="/">
-              <img
-                src="/images/vitruveo-logo-horizontal.svg"
-                alt="Vitruveo"
-                style={{ height: '32px' }}
-                className="mb-3"
-              />
-            </Link>
-            <p className="text-muted-light small">
+            <p className="text-muted-light small mb-3">
               The First Active Blockchain. Smart contracts that don't just execute—they act.
             </p>
-            <div className="d-flex gap-3 mt-3">
+            <div className="d-flex gap-3">
               <a href="https://twitter.com/vitruveochain" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />

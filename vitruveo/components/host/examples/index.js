@@ -3,10 +3,10 @@
 
 export const HOST_EXAMPLES = [
   {
-    slug: 'alpha',
-    name: 'Alpha',
-    title: 'AI Agent Trigger',
-    description: 'Trigger an AI agent from a smart contract to process and respond to on-chain events.',
+    slug: 'sheets',
+    name: 'Sheets',
+    title: 'Smart Contract Updates Google Sheets',
+    description: 'A smart contract writes data directly to a Google Sheet via HOST.',
   },
   {
     slug: 'beta',

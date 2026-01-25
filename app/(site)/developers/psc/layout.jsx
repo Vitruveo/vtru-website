@@ -21,6 +21,9 @@ export default function PSCLayout({ children }) {
   const pathname = usePathname();
   const router = useRouter();
 
+  // Hide PSC nav bar when in HOST section (HOST has its own nav bar)
+  const isHostSection = pathname.includes('/psc/host');
+
   const currentSlug = pathname.split('/').pop();
   const currentPSC = PSC_LIST.find(p => p.slug === currentSlug);
 
@@ -31,6 +34,10 @@ export default function PSCLayout({ children }) {
       router.push(psc?.href || `/developers/psc/${slug}`);
     }
   };
+
+  if (isHostSection) {
+    return <>{children}</>;
+  }
 
   return (
     <>

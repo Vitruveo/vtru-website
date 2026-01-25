@@ -29,8 +29,8 @@ export default function HostPrimerPage() {
             HTTP Outbound Service Trigger — A comprehensive guide to the secure layered architecture
             that enables smart contracts to invoke AI agents and agentic workflows.
           </p>
-          <Link href="/developers/psc/host" className="btn btn-outline-light">
-            ← Back to HOST Reference
+          <Link href="/host" className="btn btn-primary btn-lg px-5 py-3" style={{ fontSize: '1.25rem' }}>
+            Try HOST Demos →
           </Link>
         </div>
       </section>
@@ -431,8 +431,8 @@ export default function HostPrimerPage() {
         <div className="container text-center">
           <h3 className="text-white mb-4">Ready to Build?</h3>
           <div className="d-flex justify-content-center gap-3 flex-wrap">
-            <Link href="/developers/psc/host" className="btn btn-primary btn-lg">
-              HOST Reference
+            <Link href="/host" className="btn btn-primary btn-lg">
+              Try HOST Demos
             </Link>
             <Link href="/developers/psc" className="btn btn-outline-light btn-lg">
               All Protocol Contracts

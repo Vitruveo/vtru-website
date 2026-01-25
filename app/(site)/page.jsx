@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { HeroChat } from '@/components/site/hero-chat';
+import { PSCDemos } from '@/components/site/psc-demos';
 
 export const metadata = {
   title: 'Vitruveo - The First Active Blockchain',
@@ -39,6 +40,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Try Protocol Smart Contract Demos */}
+      <PSCDemos title="Try Protocol Smart Contract Demos" />
 
       {/* Why Vitruveo */}
       <section className="section-dark-2 py-5">
@@ -108,7 +112,7 @@ export default function HomePage() {
                   </svg>
                   HOST Primer
                 </Link>
-                <Link href="/developers/psc/host" className="btn btn-outline-light">
+                <Link href="/host" className="btn btn-outline-light">
                   Quick Reference
                 </Link>
               </div>

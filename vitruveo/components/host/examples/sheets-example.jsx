@@ -2,8 +2,8 @@
 
 import { getExampleBySlug } from './index';
 
-export function AlphaExample() {
-  const example = getExampleBySlug('alpha');
+export function SheetsExample() {
+  const example = getExampleBySlug('sheets');
 
   return (
     <>

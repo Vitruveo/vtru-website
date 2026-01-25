@@ -37,16 +37,19 @@ export function SiteHeader() {
               <Link href="/" className="nav-link" onClick={closeMenu}>Home</Link>
             </li>
             <li className="nav-item">
-              <Link href="/about" className="nav-link" onClick={closeMenu}>About</Link>
+              <Link href="/developers" className="nav-link" onClick={closeMenu}>Developers</Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/host" className="nav-link" onClick={closeMenu}>HOST Demos</Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/chat" className="nav-link" onClick={closeMenu}>AI Chat</Link>
             </li>
             <li className="nav-item">
               <Link href="/ecosystem" className="nav-link" onClick={closeMenu}>Ecosystem</Link>
             </li>
             <li className="nav-item">
-              <Link href="/developers" className="nav-link" onClick={closeMenu}>Developers</Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/chat" className="nav-link" onClick={closeMenu}>AI Chat</Link>
+              <Link href="/about" className="nav-link" onClick={closeMenu}>About</Link>
             </li>
             <li className="nav-item ms-lg-3">
               <a
