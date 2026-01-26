@@ -178,7 +178,7 @@ export function useHostDemo() {
 
       const receipt = await tx.wait();
       setTxHash(tx.hash);
-      setTxStatus({ type: 'success', message: 'Transaction confirmed!' });
+      setTxStatus({ type: 'success', message: 'Transaction confirmed! Expect delivery in a few moments.' });
 
       return { hash: tx.hash, receipt };
     } catch (err) {

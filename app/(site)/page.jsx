@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { HeroChat } from '@/components/site/hero-chat';
+import { HostDemos } from '@/components/site/host-demos';
 import { PSCDemos } from '@/components/site/psc-demos';
 
 export const metadata = {
@@ -11,38 +12,46 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section with Video */}
-      <section className="hero-video d-flex align-items-center" style={{ marginTop: '-72px' }}>
+      <section className="hero-video d-flex align-items-center" style={{ marginTop: '-72px', paddingTop: '72px' }}>
         <video autoPlay muted loop playsInline className="video-bg">
           <source src="/videos/herovideo.mp4" type="video/mp4" />
         </video>
         <div className="overlay"></div>
-        <div className="container py-5">
+        <div className="container py-4">
           <div className="row">
             <div className="col-lg-8">
-              <h1 className="display-3 fw-bold text-white mb-4">
+              <h1 className="display-4 fw-bold text-white mb-3">
                 The First <span className="text-vtru-green">Active</span> Blockchain
               </h1>
-              <p className="lead text-white-50 mb-4">
+              <p className="lead text-white-50 mb-3">
                 Smart contracts that don't just execute—they act. Vitruveo extends the EVM
                 with protocol-level capabilities that trigger AI agents, Web2 services,
                 and real-world automation.
               </p>
-              <div className="d-flex flex-wrap gap-3 mb-4">
-                <Link href="/developers/psc" className="btn btn-primary btn-lg">
+              <div className="d-flex flex-wrap gap-3">
+                <Link href="/developers/psc" className="btn btn-host-primer">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="me-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
                   Start Building
                 </Link>
-                <Link href="/about" className="btn btn-outline-light btn-lg">
+                <Link href="/overview" className="btn btn-host-primer">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="me-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" />
+                  </svg>
                   Learn More
                 </Link>
               </div>
-              <HeroChat />
             </div>
           </div>
         </div>
       </section>
 
+      {/* Try HOST Interactive Demos */}
+      <HostDemos title="Try HOST Interactive Demos" limit={3} />
+
       {/* Try Protocol Smart Contract Demos */}
-      <PSCDemos title="Try Protocol Smart Contract Demos" />
+      <PSCDemos title="Try Protocol Smart Contract Demos" limit={3} excludeBatch={true} showMoreButton={true} />
 
       {/* Why Vitruveo */}
       <section className="section-dark-2 py-5">
@@ -105,17 +114,12 @@ export default function HomePage() {
                 during transaction execution. On-chain events become autonomous
                 decisions—no polling, no indexers, no middleware.
               </p>
-              <div className="d-flex flex-wrap gap-3">
-                <Link href="/host-primer" className="btn btn-host-primer">
-                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="me-2">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                  HOST Primer
-                </Link>
-                <Link href="/host" className="btn btn-outline-light">
-                  Quick Reference
-                </Link>
-              </div>
+              <Link href="/host-primer" className="btn btn-host-primer">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="me-2">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                HOST Primer
+              </Link>
             </div>
             <div className="col-lg-6">
               <div className="card card-dark p-4 rounded-3">
@@ -168,7 +172,10 @@ export default function HomePage() {
                 Webhooks, passkeys, randomness, batching, Merkle proofs, trend analysis,
                 and more—built directly into the protocol.
               </p>
-              <Link href="/developers/psc" className="btn btn-primary">
+              <Link href="/developers/psc" className="btn btn-host-primer">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="me-2">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
                 Explore PSCs
               </Link>
             </div>

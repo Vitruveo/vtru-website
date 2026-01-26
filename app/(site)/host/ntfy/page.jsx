@@ -87,10 +87,27 @@ export default function NtfyDemoPage() {
               </div>
               <h1 className="text-white mb-3">Ntfy Alerts</h1>
               <p className="text-muted-light lead">
-                Send real-time push notifications from the blockchain to any device.
-                Your message will be delivered via <a href="https://ntfy.sh" target="_blank" rel="noopener noreferrer" className="text-vtru-green">ntfy.sh</a>, a simple HTTP-based notification service.
+                Send push notifications to any device directly from your smart contract function.
               </p>
             </div>
+
+            <details className="use-cases-section mb-4">
+              <summary className="use-cases-toggle">
+                <span>Web3 Use-cases</span>
+                <svg className="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </summary>
+              <div className="use-cases-content">
+                <ul>
+                  <li><strong>Balance Threshold Alerts</strong> — Publish when a wallet or contract balance crosses above or below a threshold</li>
+                  <li><strong>Mint Status Updates</strong> — Publish when an NFT collection reaches milestones or mints out completely</li>
+                  <li><strong>Governance Outcomes</strong> — Publish when a DAO proposal passes, fails, or reaches quorum</li>
+                  <li><strong>Liquidity Events</strong> — Publish when pool TVL, utilization, or rates cross significant thresholds</li>
+                  <li><strong>Sale Milestones</strong> — Publish when a token launch hits funding goals or sells out</li>
+                </ul>
+              </div>
+            </details>
 
             <div className="demo-card">
               <div className="step-section">
@@ -256,6 +273,51 @@ export default function NtfyDemoPage() {
         }
         .text-vtru-green {
           color: #4ade80;
+        }
+        .use-cases-section {
+          background: rgba(74, 222, 128, 0.05);
+          border: 1px solid rgba(74, 222, 128, 0.2);
+          border-radius: 12px;
+          overflow: hidden;
+        }
+        .use-cases-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 1.25rem;
+          cursor: pointer;
+          color: #4ade80;
+          font-weight: 600;
+          font-size: 0.95rem;
+          list-style: none;
+        }
+        .use-cases-toggle::-webkit-details-marker {
+          display: none;
+        }
+        .use-cases-toggle .chevron {
+          transition: transform 0.2s ease;
+        }
+        .use-cases-section[open] .use-cases-toggle .chevron {
+          transform: rotate(180deg);
+        }
+        .use-cases-content {
+          padding: 0 1.25rem 1.25rem;
+          color: #999;
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+        .use-cases-content ul {
+          margin: 0;
+          padding-left: 1.25rem;
+        }
+        .use-cases-content li {
+          margin-bottom: 0.5rem;
+        }
+        .use-cases-content li:last-child {
+          margin-bottom: 0;
+        }
+        .use-cases-content strong {
+          color: #ccc;
         }
       `}</style>
     </section>

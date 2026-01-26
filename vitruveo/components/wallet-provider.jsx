@@ -1,17 +1,22 @@
 'use client';
 
+import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
-import { config, vitruveo } from '../lib/wagmi-config';
+import { getConfig, vitruveo } from '../lib/wagmi-config';
 
 import '@rainbow-me/rainbowkit/styles.css';
 
-const queryClient = new QueryClient();
-
 export function WalletProvider({ children }) {
+  // Create QueryClient and config in state to avoid SSR issues
+  const [queryClient] = useState(() => new QueryClient());
+  const [wagmiConfig] = useState(() => getConfig());
+
+  if (!wagmiConfig) return null;
+
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
           theme={darkTheme({

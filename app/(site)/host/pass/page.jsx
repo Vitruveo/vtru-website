@@ -8,54 +8,82 @@ import {
   HostDemoButton,
 } from '@/vitruveo/components/host';
 import { HostConnectButton } from '@/vitruveo/components/host/connect-button';
-import { useAccount } from 'wagmi';
 
-const WEBHOOK_URL = 'https://vitruveo.app.n8n.cloud/webhook/sheets-demo';
-const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1wAO8j1syiXt4QzSufy-Y5w42RgYhMe6GjXvp9o7s3mM/edit?usp=sharing';
+const WALLETAP_URL = 'https://api.walletap.io/pass';
+const WALLETAP_API_KEY = 'dd669681-6f1e-491c-a2a0-599d4cc89cf9';
+const TEMPLATE_ID = 'sVcXpKPn3Vqg8GdBv7Zf';
 
-export default function SheetsDemoPage() {
-  const [number, setNumber] = useState('');
+export default function MobilePassDemoPage() {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [validationError, setValidationError] = useState(null);
 
-  const { address } = useAccount();
   const { isConnected, isSubmitting, txStatus, txHash, submit, reset } = useHostDemo();
 
-  const isValidNumber = (value) => {
-    const num = parseInt(value, 10);
-    return !isNaN(num) && num >= 1 && num <= 10000;
+  const formatPhone = (value) => {
+    // Ensure + prefix
+    if (!value.startsWith('+') && value.length > 0) {
+      return '+' + value.replace(/[^\d]/g, '');
+    }
+    return '+' + value.slice(1).replace(/[^\d]/g, '');
+  };
+
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhone(e.target.value);
+    setPhone(formatted);
+  };
+
+  const isValidPhone = (value) => {
+    // Must start with + and have at least 10 digits
+    return /^\+\d{10,15}$/.test(value);
   };
 
   const handleSubmit = async () => {
     reset();
     setValidationError(null);
 
-    if (!isValidNumber(number)) {
-      setValidationError('Please enter a number between 1 and 10,000');
+    if (!name.trim()) {
+      setValidationError('Please enter your name');
       return;
     }
-    if (!address) {
-      setValidationError('Please connect your wallet');
+    if (!isValidPhone(phone)) {
+      setValidationError('Please enter a valid phone number with country code (e.g., +1234567890)');
       return;
     }
 
+    // Build templates with placeholders
+    const headerTemplate = JSON.stringify({
+      'Content-Type': 'application/json',
+      'X-API-Key': '$1'
+    });
+
     const bodyTemplate = JSON.stringify({
-      walletAddress: '$1',
-      number: '$2',
-      timestamp: Date.now(),
+      passes: [{
+        templateId: TEMPLATE_ID,
+        templateFields: {
+          accountName: '$1',
+          balance: 1490
+        },
+        customFields: {
+          status: 'OG Community'
+        }
+      }],
+      phone: '$2',
+      sendToPhone: true
     });
 
     const payload = await buildPayload({
-      url: WEBHOOK_URL,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      url: WALLETAP_URL,
+      headerTemplate: headerTemplate,
+      headerValues: [WALLETAP_API_KEY],
       bodyTemplate: bodyTemplate,
-      bodyValues: [address, number],
+      bodyValues: [name.trim(), phone],
     });
 
-    const txResult = await submit(payload);
-    if (txResult) {
-      setNumber('');
+    const result = await submit(payload);
+    if (result) {
+      setName('');
+      setPhone('');
     }
   };
 
@@ -66,14 +94,14 @@ export default function SheetsDemoPage() {
           <div className="col-lg-8">
             <div className="text-center mb-5">
               <div className="demo-icon mb-4">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#34a853" strokeWidth="1.5">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="1.5">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                  <line x1="12" y1="18" x2="12" y2="18.01" strokeWidth="2" />
                 </svg>
               </div>
-              <h1 className="text-white mb-3">AI Google Sheets Update</h1>
+              <h1 className="text-white mb-3">Mobile Wallet Pass</h1>
               <p className="text-muted-light lead">
-                Write data directly to a Google Sheet from a smart contract. Your transaction inserts a row with your wallet address and chosen number.
+                Deliver digital passes to Apple Wallet or Google Wallet, triggered by on-chain transactions.
               </p>
             </div>
 
@@ -86,11 +114,11 @@ export default function SheetsDemoPage() {
               </summary>
               <div className="use-cases-content">
                 <ul>
-                  <li><strong>Treasury Spend Logging</strong> — When a DAO executes a payment, log the transaction details for auditing</li>
-                  <li><strong>Swap Receipts</strong> — When a swap completes, record the trade for tax reporting and portfolio tracking</li>
-                  <li><strong>Vote Recording</strong> — When a governance vote is cast, write the vote to a permanent shared record</li>
-                  <li><strong>Airdrop Receipts</strong> — When tokens are distributed, log each recipient for compliance documentation</li>
-                  <li><strong>Staking Ledger</strong> — When users stake or unstake, maintain a real-time accounting ledger</li>
+                  <li><strong>Ticket NFT Fulfillment</strong> — When a ticket NFT is purchased, instantly deliver a scannable event pass</li>
+                  <li><strong>Membership Onboarding</strong> — When someone stakes tokens, issue them a membership card for the community</li>
+                  <li><strong>Loyalty Point Updates</strong> — When a purchase completes, send an updated loyalty pass with new point balance</li>
+                  <li><strong>POAP Badge Delivery</strong> — When a POAP is claimed, deliver the corresponding conference badge</li>
+                  <li><strong>Access Pass Provisioning</strong> — When an access NFT is minted, issue building or service credentials</li>
                 </ul>
               </div>
             </details>
@@ -99,30 +127,48 @@ export default function SheetsDemoPage() {
               <div className="step-section">
                 <div className="step-header">
                   <span className="step-number">1</span>
-                  <h3>Pick a Number</h3>
+                  <h3>Enter Your Name</h3>
                 </div>
-                <p className="text-muted-light mb-3">
-                  Choose any number between 1 and 10,000.
-                </p>
                 <input
-                  type="number"
-                  className="form-control form-control-lg bg-dark text-white text-center"
-                  placeholder="Enter a number (1-10000)"
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
-                  min="1"
-                  max="10000"
-                  style={{ fontSize: '2rem', letterSpacing: '2px' }}
+                  type="text"
+                  className="form-control form-control-lg bg-dark text-white"
+                  placeholder="e.g., John Doe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  maxLength={50}
                 />
+                <div className="d-flex align-items-center gap-3 mt-2">
+                  <span className="encrypt-badge">Encrypted</span>
+                  <small className="text-muted">{name.length}/50 characters</small>
+                </div>
               </div>
 
               <div className="step-section">
                 <div className="step-header">
                   <span className="step-number">2</span>
-                  <h3>Submit to Sheet</h3>
+                  <h3>Enter Your Mobile Number</h3>
+                </div>
+                <input
+                  type="tel"
+                  className="form-control form-control-lg bg-dark text-white"
+                  placeholder="+1234567890"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  maxLength={16}
+                />
+                <div className="d-flex align-items-center gap-3 mt-2">
+                  <span className="encrypt-badge">Encrypted</span>
+                  <small className="text-muted">Include country code (e.g., +1 for US)</small>
+                </div>
+              </div>
+
+              <div className="step-section">
+                <div className="step-header">
+                  <span className="step-number">3</span>
+                  <h3>Get Your Pass</h3>
                 </div>
                 <p className="text-muted-light mb-3">
-                  Connect your wallet and submit. Your entry will be inserted at the top of the Google Sheet.
+                  Connect your wallet and submit a transaction. The HOST protocol will securely deliver your mobile wallet pass via SMS in a few seconds.
                 </p>
 
                 <div className="d-flex flex-column flex-sm-row gap-3 align-items-start">
@@ -131,9 +177,9 @@ export default function SheetsDemoPage() {
                     onClick={handleSubmit}
                     isSubmitting={isSubmitting}
                     isConnected={isConnected}
-                    disabled={!isValidNumber(number)}
+                    disabled={!name.trim() || !isValidPhone(phone)}
                   >
-                    Write to Sheet
+                    Send Pass
                   </HostDemoButton>
                 </div>
 
@@ -142,33 +188,6 @@ export default function SheetsDemoPage() {
                 )}
 
                 <HostDemoStatus status={txStatus} txHash={txHash} />
-              </div>
-
-              <div className="step-section">
-                <div className="step-header">
-                  <span className="step-number">3</span>
-                  <h3>View the Sheet</h3>
-                </div>
-                <p className="text-muted-light mb-3">
-                  See all submissions in real-time. New entries appear at the top.
-                </p>
-                <a
-                  href={SHEET_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-sheets btn-lg"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="me-2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
-                  </svg>
-                  Open Google Sheet
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ms-2">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
-                </a>
               </div>
             </div>
           </div>
@@ -207,8 +226,8 @@ export default function SheetsDemoPage() {
           width: 32px;
           height: 32px;
           border-radius: 50%;
-          background: #34a853;
-          color: #fff;
+          background: #a78bfa;
+          color: #000;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -226,30 +245,24 @@ export default function SheetsDemoPage() {
           border-color: #444;
         }
         .form-control.bg-dark:focus {
-          border-color: #34a853;
-          box-shadow: 0 0 0 0.2rem rgba(52, 168, 83, 0.25);
+          border-color: #a78bfa;
+          box-shadow: 0 0 0 0.2rem rgba(167, 139, 250, 0.25);
         }
         .form-control.bg-dark::placeholder {
           color: #666;
         }
-        .btn-sheets {
-          background: #34a853;
-          color: #fff;
-          border: none;
-          display: inline-flex;
-          align-items: center;
-          padding: 0.75rem 1.5rem;
-          border-radius: 8px;
-          font-weight: 600;
-          transition: all 0.2s;
-        }
-        .btn-sheets:hover {
-          background: #2d9249;
-          color: #fff;
+        .encrypt-badge {
+          background: rgba(167, 139, 250, 0.2);
+          color: #a78bfa;
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 700;
+          letter-spacing: 0.5px;
         }
         .use-cases-section {
-          background: rgba(52, 168, 83, 0.05);
-          border: 1px solid rgba(52, 168, 83, 0.2);
+          background: rgba(167, 139, 250, 0.05);
+          border: 1px solid rgba(167, 139, 250, 0.2);
           border-radius: 12px;
           overflow: hidden;
         }
@@ -259,7 +272,7 @@ export default function SheetsDemoPage() {
           justify-content: space-between;
           padding: 1rem 1.25rem;
           cursor: pointer;
-          color: #34a853;
+          color: #a78bfa;
           font-weight: 600;
           font-size: 0.95rem;
           list-style: none;

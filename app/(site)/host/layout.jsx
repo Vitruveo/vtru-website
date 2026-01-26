@@ -1,9 +1,15 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { WalletProvider } from '@/vitruveo/components/wallet-provider';
 import { HostConnectButton } from '@/vitruveo/components/host/connect-button';
+
+// Dynamic import to avoid SSR issues with WalletConnect's indexedDB usage
+const WalletProvider = dynamic(
+  () => import('@/vitruveo/components/wallet-provider').then(mod => mod.WalletProvider),
+  { ssr: false }
+);
 
 function HostLayoutInner({ children }) {
   const pathname = usePathname();

@@ -41,19 +41,34 @@ const pscIcons = {
   'batch-send-native': <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
 };
 
-export function PSCDemos({ title = "Protocol Smart Contracts" }) {
+export function PSCDemos({ title = "Protocol Smart Contracts", limit, excludeBatch = false, showMoreButton = false }) {
+  // Filter and limit the list
+  let displayList = pscList;
+
+  if (excludeBatch) {
+    displayList = displayList.filter(psc => psc.category !== 'Batching');
+  }
+
+  if (limit && limit < displayList.length) {
+    displayList = displayList.slice(0, limit);
+  }
+
   return (
     <section id="psc-demos" className="section-dark-2 py-5">
       <div className="container">
-        <h2 className="text-white mb-3">{title}</h2>
-        <p className="text-muted-light mb-4">
-          Every EVM has precompiles (ecrecover, sha256, etc.). Vitruveo adds 12 more
-          that give contracts capabilities no standard EVM offers.
-        </p>
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h2 className="text-white mb-2">{title}</h2>
+            <p className="text-muted-light mb-0">
+              Every EVM has precompiles (ecrecover, sha256, etc.). Vitruveo adds 12 more
+              that give contracts capabilities no standard EVM offers.
+            </p>
+          </div>
+        </div>
 
         {/* PSC Tiles */}
-        <div className="row g-3">
-          {pscList.map((psc) => (
+        <div className={`row g-3 ${showMoreButton ? 'mb-4' : ''}`}>
+          {displayList.map((psc) => (
             <div key={psc.slug} className="col-md-6 col-lg-4">
               <Link href={psc.href || `/developers/psc/${psc.slug}`} className="text-decoration-none">
                 <div className="card card-dark p-3 rounded-3 h-100 psc-tile" style={{ borderLeft: `3px solid ${psc.color}` }}>
@@ -92,6 +107,17 @@ export function PSCDemos({ title = "Protocol Smart Contracts" }) {
             </div>
           ))}
         </div>
+
+        {showMoreButton && (
+          <div className="text-center">
+            <Link href="/developers/psc" className="btn btn-host-primer">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="me-2">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              More Demos
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
