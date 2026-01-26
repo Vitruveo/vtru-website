@@ -91,7 +91,7 @@ console.log("Request ID:", receipt.events[0].args.requestId);`;
             rows={3}
             placeholder='{"key": "value"}'
           />
-          <small className="text-muted">Data sent to your webhook (keep secrets off-chain!)</small>
+          <small className="text-muted">Data sent to your webhook (use | prefix to encrypt sensitive values)</small>
         </div>
       </div>
 
@@ -134,11 +134,11 @@ console.log("Request ID:", receipt.events[0].args.requestId);`;
         </div>
         <div className="col-md-6">
           <div className="card card-dark p-4 rounded-3 h-100">
-            <h5 className="text-vtru-green mb-3">Security Reminder</h5>
+            <h5 className="text-vtru-green mb-3">Built-in Encryption</h5>
             <p className="text-muted-light small mb-0">
-              On-chain data is public. Use the <strong className="text-white">Secure Proxy Pattern</strong>:
-              point HOST at your proxy that injects API keys before forwarding to
-              sensitive endpoints.
+              HOST supports <strong className="text-white">ECDH + AES-256-GCM encryption</strong> for sensitive values.
+              Prefix encrypted values with <code className="text-vtru-green">|</code> and only the designated
+              validator can decrypt them when executing the webhook.
             </p>
           </div>
         </div>

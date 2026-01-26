@@ -1,15 +1,10 @@
 {
-  "generatedAt": "2026-01-20T00:31:59.863Z",
+  "generatedAt": "2026-01-26T07:00:16.473Z",
   "pages": [
     {
       "path": "/",
       "title": "Vitruveo - The First Active Blockchain",
       "description": "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities."
-    },
-    {
-      "path": "/about",
-      "title": "About",
-      "description": "Building the Active Blockchain. Learn about Vitruveo's approach to extending the EVM."
     },
     {
       "path": "/developers/psc/batch-balance",
@@ -35,11 +30,6 @@
       "path": "/developers/psc/compound-interest",
       "title": "Compound Interest - Protocol Smart Contracts",
       "description": "High-precision compound interest calculation for DeFi."
-    },
-    {
-      "path": "/developers/psc/host",
-      "title": "HTTP Outbound Service Trigger - Protocol Smart Contracts",
-      "description": "Smart contracts that invoke AI agents and trigger agentic workflows during transaction execution."
     },
     {
       "path": "/developers/psc/ibc",
@@ -72,14 +62,19 @@
       "description": "OLS regression and volatility analysis at the protocol level."
     },
     {
-      "path": "/ecosystem",
-      "title": "Ecosystem",
-      "description": "Explore apps and infrastructure building on Vitruveo."
+      "path": "/host/beta",
+      "title": "Webhook Notification - HOST Example",
+      "description": "Send real-time notifications to external services when contract events occur."
     },
     {
-      "path": "/host-primer",
-      "title": "HOST Primer",
-      "description": "Deep dive into HOST Protocol: how smart contracts invoke AI agents and agentic workflows. Chain of Trust security model and workflow lifecycle."
+      "path": "/host/request",
+      "title": "HOST Request Generator",
+      "description": "Generate and encrypt HOST requests to trigger AI agents and webhooks from smart contracts."
+    },
+    {
+      "path": "/overview",
+      "title": "Overview",
+      "description": "Learn about Vitruveo, the Active Blockchain. Smart contracts that trigger AI agents, Web2 services, and real-world automation."
     }
   ],
   "pscs": [],

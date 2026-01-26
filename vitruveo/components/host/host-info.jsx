@@ -1,7 +1,52 @@
 'use client';
 
 import Link from 'next/link';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { HOST_REGISTRY_ADDRESS } from '../../lib/psc-constants';
+
+const jsEncryptCode = `const secp256k1 = require('secp256k1');  // v4.0.3 - CRITICAL: Must use v4.x
+const crypto = require('crypto');
+
+function encrypt(validatorPubkeyHex, plaintext) {
+    const validatorPubkey = Buffer.from(validatorPubkeyHex, 'hex');
+
+    // 1. Generate ephemeral keypair
+    let ephemeralPriv;
+    do {
+        ephemeralPriv = crypto.randomBytes(32);
+    } while (!secp256k1.privateKeyVerify(ephemeralPriv));
+
+    const ephemeralPub = Buffer.from(secp256k1.publicKeyCreate(ephemeralPriv, false));
+
+    // 2. ECDH - derive shared secret (raw x-coordinate)
+    const shared = Buffer.from(
+        secp256k1.ecdh(validatorPubkey, ephemeralPriv, { hashfn: (x, y) => x }, Buffer.alloc(32))
+    );
+
+    // 3. AES-256-GCM encrypt
+    const nonce = crypto.randomBytes(12);
+    const cipher = crypto.createCipheriv('aes-256-gcm', shared, nonce);
+    const encrypted = Buffer.concat([cipher.update(plaintext, 'utf8'), cipher.final()]);
+    const tag = cipher.getAuthTag();
+
+    // 4. Output format: | + hex(ephemeralPub || nonce || ciphertext || tag)
+    return '|' + Buffer.concat([ephemeralPub, nonce, encrypted, tag]).toString('hex');
+}`;
+
+const solidityUsageCode = `// Plaintext values - no encryption
+string[] memory headerValues = new string[](2);
+headerValues[0] = "application/json";
+
+// Encrypted value - prefix with |
+headerValues[1] = "|04abc123...def456";  // Encrypted API key
+
+registry.addRequest(
+    "https://api.example.com/webhook",
+    '{"Content-Type":"$1","Authorization":"Bearer $2"}',
+    headerValues,
+    ...
+);`;
 
 export function HostInfo() {
   return (
@@ -57,11 +102,46 @@ addRequest(
       </section>
 
       <section className="mb-5">
-        <h3 className="text-vtru-green mb-3">Security: Secure Proxy Pattern</h3>
-        <p className="text-muted-light">
-          All on-chain data is public. Never store secrets in contract payloads. Point HOST
-          at your proxy server that authenticates requests and injects API keys before forwarding.
+        <h3 className="text-vtru-green mb-3">Encryption/Decryption</h3>
+        <p className="text-muted-light mb-3">
+          HOST allows smart contracts to trigger HTTP webhooks with encrypted sensitive data (API keys, tokens, secrets).
+          The encryption ensures that only the designated validator can decrypt the values when executing the webhook.
         </p>
+
+        <h5 className="text-white mt-4 mb-2">Encryption Scheme</h5>
+        <ul className="text-muted-light mb-4">
+          <li><strong className="text-white">Algorithm:</strong> ECDH (Elliptic Curve Diffie-Hellman) key agreement + AES-256-GCM symmetric encryption</li>
+          <li><strong className="text-white">Curve:</strong> secp256k1 (same as Ethereum)</li>
+        </ul>
+
+        <h5 className="text-white mt-4 mb-2">Ciphertext Format</h5>
+        <div className="code-block mb-3">
+          <pre className="mb-0">{`| + [ephemeralPubKey (65 bytes)] + [nonce (12 bytes)] + [ciphertext (variable)] + [authTag (16 bytes)]
+
+|               - Magic prefix indicating encrypted value
+ephemeralPubKey - Uncompressed secp256k1 public key (0x04 prefix + 64 bytes)
+nonce           - Random 12-byte IV for AES-GCM
+ciphertext      - Encrypted data
+authTag         - 16-byte GCM authentication tag`}</pre>
+        </div>
+
+        <h5 className="text-white mt-4 mb-2">Security Properties</h5>
+        <ul className="text-muted-light mb-4">
+          <li><strong className="text-white">Asymmetric:</strong> Only the validator with the private key can decrypt</li>
+          <li><strong className="text-white">Forward Secrecy:</strong> Each encryption uses a fresh ephemeral keypair</li>
+          <li><strong className="text-white">Authenticated:</strong> GCM tag prevents tampering</li>
+          <li><strong className="text-white">On-chain Privacy:</strong> Encrypted values are stored/transmitted as opaque hex blobs</li>
+        </ul>
+
+        <h5 className="text-white mt-4 mb-2">Client-Side Encryption (JavaScript)</h5>
+        <SyntaxHighlighter language="javascript" style={oneDark} customStyle={{ borderRadius: '8px', fontSize: '0.85rem' }}>
+          {jsEncryptCode}
+        </SyntaxHighlighter>
+
+        <h5 className="text-white mt-4 mb-2">Usage in Smart Contracts</h5>
+        <SyntaxHighlighter language="solidity" style={oneDark} customStyle={{ borderRadius: '8px', fontSize: '0.85rem' }}>
+          {solidityUsageCode}
+        </SyntaxHighlighter>
       </section>
 
       {/* Use Cases */}
