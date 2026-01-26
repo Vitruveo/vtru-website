@@ -54,14 +54,14 @@ export function HostInfo() {
       <section className="mb-5">
         <h3 className="text-vtru-green mb-3">Why It Matters</h3>
         <p className="text-muted-light">
-          Traditional blockchains emit events and wait. HOST inverts this—contracts actively
-          command AI agents to reason, decide, and act. Your inference endpoints receive
-          requests the moment transactions execute.
+          Smart contracts have always been silent. They execute, but they can't speak back.
+          Web2 apps have to index, poll, and react asynchronously. HOST changes this—contracts
+          call your webhooks directly during transaction execution.
         </p>
         <p className="text-muted-light">
-          This is the bridge between on-chain logic and off-chain intelligence. Smart contracts
-          can trigger LLM inference, spawn autonomous agents, initiate multi-step workflows,
-          and receive AI-driven decisions—all within the transaction lifecycle.
+          Web2 → Web3 → Web2. Complete. Your app calls a contract, the contract speaks back,
+          your app responds instantly. Signed by the validator. Provably authentic.
+          No indexers. No polling. No middleware.
         </p>
       </section>
 

@@ -67,8 +67,8 @@ export default function HostPrimerPage() {
           </div>
           <h1 className="display-4 fw-bold text-white mb-3">HOST Primer</h1>
           <p className="lead text-muted-light mb-4">
-            HTTP Outbound Service Trigger — A comprehensive guide to the secure layered architecture
-            that enables smart contracts to invoke AI agents and agentic workflows.
+            Smart contracts that speak HTTP. The first protocol-level outbound trigger in any EVM chain.
+            Webhooks for Web3.
           </p>
           <Link href="/host" className="btn btn-primary btn-lg px-5 py-3" style={{ fontSize: '1.25rem' }}>
             Try HOST Demos →
@@ -81,21 +81,24 @@ export default function HostPrimerPage() {
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
-              <h2 className="text-white mb-4">The Vision: On-Chain Intelligence</h2>
+              <h2 className="text-white mb-4">The Silent Problem</h2>
               <p className="text-muted-light">
-                Traditional blockchains are <strong className="text-white">passive</strong>. They emit events,
-                log state changes, and wait for external systems to poll, index, and react. AI agents
-                must constantly watch for changes instead of being commanded directly.
+                Web3 has been a one-way street. Transactions bring data in from Web2. Smart contracts
+                execute. But nothing goes back out. <strong className="text-white">The silence is deafening.</strong>
               </p>
               <p className="text-muted-light">
-                HOST makes Vitruveo <strong className="text-white">active</strong>. Smart contracts don't
-                just execute—they invoke. During transaction execution, contracts can directly trigger
-                AI agents, spawn agentic workflows, and initiate autonomous decision-making processes.
+                Web2 runs on webhooks—Stripe, Shopify, Slack, GitHub. All Web3 offers is unreliable event logs.
+                Web2 apps have to index, poll, and react asynchronously. Result: low developer adoption.
+              </p>
+              <h2 className="text-white mb-4 mt-5">The Voice</h2>
+              <p className="text-muted-light">
+                HOST gives smart contracts a voice. The first protocol-level outbound trigger in any EVM chain.
+                Contract sends data to your webhook during transaction execution.
+                <strong className="text-white"> Signed by the validator. Provably authentic.</strong>
               </p>
               <p className="text-muted-light">
-                This is the bridge between on-chain logic and off-chain intelligence. Your Solidity code
-                can trigger LLM inference, spawn multi-step agent workflows, and initiate AI-driven
-                analysis—all within the transaction lifecycle. No indexers. No polling. No middleware.
+                Web2 → Web3 → Web2. Complete. Your app calls a contract, the contract speaks back,
+                your app responds instantly. No indexers. No polling. No middleware.
               </p>
             </div>
           </div>

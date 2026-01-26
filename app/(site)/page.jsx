@@ -5,8 +5,8 @@ import { HostDemos } from '@/components/site/host-demos';
 import { PSCDemos } from '@/components/site/psc-demos';
 
 export const metadata = {
-  title: 'Vitruveo - The First Active Blockchain',
-  description: 'Smart contracts that don\'t just execute—they act. Vitruveo extends the EVM with protocol-level capabilities.',
+  title: 'Vitruveo - Webhooks for Web3',
+  description: 'Smart contracts have always been silent. Vitruveo gives them a voice. The first EVM chain where contracts speak HTTP.',
 };
 
 export default function HomePage() {
@@ -20,12 +20,12 @@ export default function HomePage() {
           <div className="row">
             <div className="col-lg-8">
               <h1 className="display-4 fw-bold text-white mb-3">
-                The First <span className="text-vtru-green">Active</span> Blockchain
+                <span className="text-vtru-green">Webhooks</span> for Web3
               </h1>
               <p className="lead text-white-50 mb-3">
-                Smart contracts that don't just execute—they act. Vitruveo extends the EVM
-                with protocol-level capabilities that trigger AI agents, Web2 services,
-                and real-world automation.
+                Smart contracts have always been silent. Vitruveo gives them a voice.
+                The first EVM chain where contracts speak HTTP—no indexers, no polling,
+                no middleware.
               </p>
               <div className="d-flex flex-wrap gap-3">
                 <Link href="/developers/psc" className="btn btn-host-primer">
@@ -55,8 +55,39 @@ export default function HomePage() {
       {/* Why Vitruveo */}
       <section className="section-dark-2 py-5">
         <div className="container py-4">
-          <h2 className="text-center text-white mb-5">Why Vitruveo?</h2>
+          <h2 className="text-center text-white mb-5">The Full Circle</h2>
+          <p className="text-center text-muted-light mb-5" style={{ maxWidth: '600px', margin: '0 auto' }}>
+            Web2 → Web3 → Web2. Complete. Your app calls a contract, the contract speaks back.
+          </p>
           <div className="row g-4">
+            <div className="col-md-4">
+              <div className="card card-dark h-100 p-4 rounded-3">
+                <div className="mb-3">
+                  <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="text-vtru-green">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+                <h4 className="text-white">Contracts That Speak</h4>
+                <p className="text-muted-light mb-0">
+                  Smart contracts call your webhooks during transaction execution.
+                  No indexers. No polling. No middleware.
+                </p>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="card card-dark h-100 p-4 rounded-3">
+                <div className="mb-3">
+                  <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="text-vtru-green">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h4 className="text-white">Provably Authentic</h4>
+                <p className="text-muted-light mb-0">
+                  Every outbound call signed by the validator. Your webhook knows
+                  it came from the blockchain. Trust extended off-chain.
+                </p>
+              </div>
+            </div>
             <div className="col-md-4">
               <div className="card card-dark h-100 p-4 rounded-3">
                 <div className="mb-3">
@@ -64,37 +95,10 @@ export default function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h4 className="text-white">Active, Not Passive</h4>
+                <h4 className="text-white">Built for AI</h4>
                 <p className="text-muted-light mb-0">
-                  Smart contracts that trigger webhooks, call AI agents, and initiate
-                  real-world actions—no indexers or polling required.
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card card-dark h-100 p-4 rounded-3">
-                <div className="mb-3">
-                  <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="text-vtru-green">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                </div>
-                <h4 className="text-white">Familiar + Extended</h4>
-                <p className="text-muted-light mb-0">
-                  100% Solidity compatible, plus 12 protocol-level capabilities
-                  that extend the capabilities of the standard EVM.
-                </p>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card card-dark h-100 p-4 rounded-3">
-                <div className="mb-3">
-                  <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="text-vtru-green">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                </div>
-                <h4 className="text-white">Built for Speed</h4>
-                <p className="text-muted-light mb-0">
-                  5-second blocks. 4 gwei gas. Fast enough for interactive AI workflows.
+                  5-second blocks. On-chain events trigger agentic workflows instantly.
+                  A blockchain designed for the AI era.
                 </p>
               </div>
             </div>
@@ -107,11 +111,11 @@ export default function HomePage() {
         <div className="container py-4">
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
-              <h2 className="text-white mb-4">Smart Contracts That Trigger AI Agents</h2>
+              <h2 className="text-white mb-4">HOST — Smart Contracts That Speak HTTP</h2>
               <p className="lead text-muted-light mb-4">
-                HOST lets smart contracts invoke AI agents and agentic workflows
-                during transaction execution. On-chain events become autonomous
-                decisions—no polling, no indexers, no middleware.
+                The first protocol-level outbound trigger in any EVM chain.
+                Contracts send data to your webhook during transaction execution.
+                Signed by the validator. Provably authentic.
               </p>
               <Link href="/host-primer" className="btn btn-host-primer">
                 <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="me-2">
@@ -153,7 +157,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <p className="text-muted-light text-center small mt-4 mb-0">
-                  Agentic workflows triggered during transaction execution
+                  Contract speaks → Webhook receives → Your app responds
                 </p>
               </div>
             </div>

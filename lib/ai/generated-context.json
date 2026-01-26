@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-01-26T07:00:16.473Z",
+  "generatedAt": "2026-01-26T20:58:48.030Z",
   "pages": [
     {
       "path": "/",
-      "title": "Vitruveo - The First Active Blockchain",
-      "description": "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities."
+      "title": "Vitruveo - Webhooks for Web3",
+      "description": "Smart contracts have always been silent. Vitruveo gives them a voice. The first EVM chain where contracts speak HTTP."
     },
     {
       "path": "/developers/psc/batch-balance",
@@ -74,7 +74,7 @@
     {
       "path": "/overview",
       "title": "Overview",
-      "description": "Learn about Vitruveo, the Active Blockchain. Smart contracts that trigger AI agents, Web2 services, and real-world automation."
+      "description": "Webhooks for Web3. Smart contracts have always been silent—Vitruveo gives them a voice. The first EVM chain where contracts speak HTTP."
     }
   ],
   "pscs": [],

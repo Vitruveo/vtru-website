@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Overview - Vitruveo',
-  description: 'Learn about Vitruveo, the Active Blockchain. Smart contracts that trigger AI agents, Web2 services, and real-world automation.',
+  description: 'Webhooks for Web3. Smart contracts have always been silent—Vitruveo gives them a voice. The first EVM chain where contracts speak HTTP.',
 };
 
 export default function OverviewPage() {
@@ -16,8 +16,8 @@ export default function OverviewPage() {
         </video>
         <div className="overlay"></div>
         <div className="container py-5">
-          <h1 className="display-4 fw-bold text-white mb-4">Building on Vitruveo</h1>
-          <p className="lead text-white-50 mb-0">The Active Blockchain</p>
+          <h1 className="display-4 fw-bold text-white mb-4">Webhooks for Web3</h1>
+          <p className="lead text-white-50 mb-0">Smart contracts have always been silent. Vitruveo gives them a voice.</p>
         </div>
       </section>
 
@@ -25,7 +25,7 @@ export default function OverviewPage() {
       <section className="section-dark py-5">
         <div className="container">
           <p className="text-muted-light mb-0" style={{ fontSize: '1.25rem', lineHeight: '1.8' }}>
-            Vitruveo has evolved from its genesis in arts and entertainment into a premier destination for building AI-centric applications. Unlike standard Web3 models that force rigid workflows, our HTTP Outbound Service Trigger (HOST) enables protocol smart contracts to interact seamlessly with existing Web2 hooks. This developer-first ecosystem includes a Model Context Protocol (MCP) server and an integrated AI chat to make blockchain information accessible and effortless.
+            Web3 has been a one-way street. Transactions bring data in, smart contracts execute, but nothing goes back out. Web2 apps must index, poll, and react asynchronously. Vitruveo changes this. HOST (HTTP Outbound Service Trigger) lets contracts speak HTTP during transaction execution—calling your webhooks directly, signed by the validator, provably authentic. Web2 → Web3 → Web2. Complete.
           </p>
         </div>
       </section>
@@ -35,17 +35,17 @@ export default function OverviewPage() {
         <div className="container">
           <div className="row g-5">
             <div className="col-lg-6">
-              <h2 className="text-white mb-3">The Problem</h2>
+              <h2 className="text-white mb-3">The Silent Problem</h2>
               <p className="text-muted-light" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
-                Blockchains are isolated. To make something happen off-chain requires
-                indexers, keepers, and oracles. Every integration needs infrastructure.
+                Web2 runs on webhooks—Stripe, Shopify, Slack, GitHub. All Web3 offers is
+                unreliable event logs. Execute. Wait. The silence is deafening. Result: low Web2 developer adoption.
               </p>
             </div>
             <div className="col-lg-6">
-              <h2 className="text-white mb-3">Our Approach</h2>
+              <h2 className="text-white mb-3">The Voice</h2>
               <p className="text-muted-light" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
-                Vitruveo introduces "push" architecture at the protocol level. Contracts
-                trigger external services directly. Your existing webhooks work unchanged.
+                HOST gives smart contracts a voice. The first protocol-level outbound trigger in any
+                EVM chain. Contract sends data to your webhook during transaction. Signed by the validator. Provably authentic.
               </p>
             </div>
           </div>
@@ -339,12 +339,12 @@ export default function OverviewPage() {
           <h2 className="text-white mb-4">Frequently Asked Questions</h2>
           <div className="row g-4">
             {[
-              ['What is Vitruveo?', 'A Layer 1 EVM blockchain with protocol-level extensions that let smart contracts trigger external services, verify passkeys, generate randomness, and more.'],
-              ['How is it different from Ethereum?', 'Vitruveo is 100% EVM compatible—your Solidity works unchanged. The difference is 12 additional Protocol Smart Contracts that extend what\'s possible.'],
-              ['What are Protocol Smart Contracts?', 'Precompiled contracts built into Vitruveo\'s node software at fixed addresses. They provide capabilities too expensive or impossible to implement in Solidity.'],
-              ['What is HOST?', 'HOST (HTTP Outbound Service Trigger) lets smart contracts push HTTP requests to external webhooks during transaction execution.'],
-              ['Is it secure?', 'HOST uses a decentralized validator model—no single point of failure. Validators independently choose which requests to service.'],
-              ['What\'s the gas cost?', '4 gwei base price with 5-second blocks. PSC operations range from 500 gas (RNG) to 200,000+ gas (IBC light client updates).'],
+              ['What is Vitruveo?', 'Webhooks for Web3. The first EVM chain where smart contracts speak HTTP. Your contracts call webhooks directly during transaction execution—no indexers, no polling, no middleware.'],
+              ['How is it different from Ethereum?', '100% EVM compatible—your Solidity works unchanged. The difference: HOST lets contracts talk back to Web2. Plus 11 other Protocol Smart Contracts for passkeys, randomness, and more.'],
+              ['What are Protocol Smart Contracts?', 'Precompiled contracts built into Vitruveo\'s node software. They provide capabilities too expensive or impossible in pure Solidity—like outbound HTTP calls.'],
+              ['What is HOST?', 'HTTP Outbound Service Trigger. Smart contracts that speak HTTP. Your contract sends data to your webhook during transaction. Signed by the validator. Provably authentic.'],
+              ['Is it secure?', 'Every outbound call is signed by the validator. Your webhook can verify it came from the blockchain. Chain of custody, extended off-chain.'],
+              ['What\'s the gas cost?', '4 gwei base price with 5-second blocks. Fast enough for AI agent workflows. PSC operations range from 500 gas (RNG) to 200,000+ gas (IBC).'],
             ].map(([question, answer]) => (
               <div key={question} className="col-md-6">
                 <div className="card card-dark p-4 rounded-3 h-100">
