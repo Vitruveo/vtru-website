@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { HeroChat } from '@/components/site/hero-chat';
+import { HeroVideo } from '@/components/site/hero-video';
 import { HostDemos } from '@/components/site/host-demos';
 import { PSCDemos } from '@/components/site/psc-demos';
 
@@ -13,9 +14,7 @@ export default function HomePage() {
     <>
       {/* Hero Section with Video */}
       <section className="hero-video d-flex align-items-center" style={{ marginTop: '-72px', paddingTop: '72px' }}>
-        <video autoPlay muted loop playsInline className="video-bg">
-          <source src="/videos/herovideo.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo />
         <div className="overlay"></div>
         <div className="container py-4">
           <div className="row">
