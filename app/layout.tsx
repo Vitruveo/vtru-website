@@ -9,31 +9,31 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vitruveo.ai"),
   title: {
-    default: "Vitruveo - The First Active Blockchain",
+    default: "Vitruveo - Webhooks for Web3",
     template: "%s - Vitruveo",
   },
-  description: "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities including AI agent triggers, randomness, and DeFi primitives.",
+  description: "Smart contracts have always been silent. Vitruveo gives them a voice. The first EVM chain where contracts speak HTTP—no indexers, no polling, no middleware.",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
     type: "website",
     siteName: "Vitruveo",
-    title: "Vitruveo - The First Active Blockchain",
-    description: "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities including AI agent triggers, randomness, and DeFi primitives.",
+    title: "Webhooks for Web3",
+    description: "Smart contracts have always been silent. Vitruveo gives them a voice. The first EVM chain where contracts speak HTTP—no indexers, no polling, no middleware.",
     images: [
       {
         url: "/images/preview.png",
         width: 1200,
         height: 630,
-        alt: "Vitruveo - The First Active Blockchain",
+        alt: "Vitruveo - Webhooks for Web3",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vitruveo - The First Active Blockchain",
-    description: "Smart contracts that don't just execute—they act. Vitruveo extends the EVM with protocol-level capabilities.",
+    title: "Webhooks for Web3",
+    description: "Smart contracts have always been silent. Vitruveo gives them a voice. The first EVM chain where contracts speak HTTP.",
     images: ["/images/preview.png"],
   },
 };
