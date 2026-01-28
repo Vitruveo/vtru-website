@@ -67,8 +67,8 @@ export default function HostPrimerPage() {
           </div>
           <h1 className="display-4 fw-bold text-white mb-3">HOST Primer</h1>
           <p className="lead text-muted-light mb-4">
-            Smart contracts that speak HTTP. The first protocol-level outbound trigger in any EVM chain.
-            Webhooks for Web3.
+            <strong className="text-white">HTTP Outbound Service Trigger</strong> — Smart contracts that speak HTTP.
+            The first protocol-level outbound trigger in any EVM chain. Webhooks for Web3.
           </p>
           <Link href="/host" className="btn btn-primary btn-lg px-5 py-3" style={{ fontSize: '1.25rem' }}>
             Try HOST Demos →

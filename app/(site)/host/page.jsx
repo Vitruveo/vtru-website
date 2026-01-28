@@ -77,9 +77,9 @@ export default function HostLandingPage() {
         <div className="text-center mb-5">
           <h1 className="text-white mb-3">HOST Interactive Demos</h1>
           <p className="text-muted-light lead mx-auto" style={{ maxWidth: '700px' }}>
-            <strong>HTTP Onchain Secure Transport</strong> lets your smart contracts securely call any API,
-            send notifications, trigger AI agents, and interact with the real world—all from on-chain function calls
-            with encrypted payloads. No oracles. No bridges. Just direct, verifiable execution.
+            <strong>HTTP Outbound Service Trigger</strong> gives your smart contracts a voice. Call any webhook,
+            send notifications, trigger AI agents—all during transaction execution.
+            Signed by the validator. No indexers. No polling. No middleware.
           </p>
           <p className="text-vtru-green display-6 fw-bold mt-4">Can your blockchain do that?</p>
         </div>

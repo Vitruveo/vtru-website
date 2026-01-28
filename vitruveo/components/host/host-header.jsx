@@ -8,7 +8,7 @@ export function HostHeader() {
     <div className="mb-4">
       <h1 className="display-5 fw-bold text-white mb-2">HTTP Outbound Service Trigger</h1>
       <p className="text-muted-light mb-3">
-        Smart contracts invoke AI agents and agentic workflows
+        Smart contracts that speak HTTP — webhooks for Web3
         <span className="ms-3 small">
           <code className="text-vtru-green">{PSC_ADDRESSES.HOST}</code>
           <span className="text-white-50 ms-2">~{PSC_GAS.HOST.base.toLocaleString()}+ gas</span>
