@@ -254,7 +254,7 @@ export default function OverviewPage() {
         <div className="container">
           <h2 className="text-white mb-4">Featured Apps</h2>
           <div className="row g-4">
-            <div className="col-md-6 col-lg-3">
+            <div className="col-md-6 col-lg-4">
               <div className="card card-dark p-4 rounded-3 h-100">
                 <div className="mb-3" style={{ height: '36px' }}>
                   <Image src="/images/xibit.webp" alt="Xibit" width={100} height={36} style={{ objectFit: 'contain' }} />
@@ -265,18 +265,7 @@ export default function OverviewPage() {
                 </a>
               </div>
             </div>
-            <div className="col-md-6 col-lg-3">
-              <div className="card card-dark p-4 rounded-3 h-100">
-                <div className="mb-3" style={{ height: '36px' }}>
-                  <Image src="/images/yieldable.svg" alt="Yieldable" width={140} height={44} style={{ objectFit: 'contain' }} />
-                </div>
-                <p className="text-muted-light small mb-3"><strong className="text-white">Yieldable:</strong> Smart contract-powered income platform</p>
-                <a href="https://yieldable.finance" target="_blank" rel="noopener noreferrer" className="text-vtru-green">
-                  Visit yieldable.finance →
-                </a>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
+            <div className="col-md-6 col-lg-4">
               <div className="card card-dark p-4 rounded-3 h-100">
                 <div className="mb-3" style={{ height: '36px' }}>
                   <Image src="/images/pretrend.png" alt="Pretrend" width={36} height={36} style={{ objectFit: 'contain' }} />
@@ -285,7 +274,7 @@ export default function OverviewPage() {
                 <span className="badge bg-secondary">Coming Soon</span>
               </div>
             </div>
-            <div className="col-md-6 col-lg-3">
+            <div className="col-md-6 col-lg-4">
               <div className="card card-dark p-4 rounded-3 h-100">
                 <div className="mb-3" style={{ height: '36px' }}>
                   <Image src="/images/appvinci-white.png" alt="AppVinci" width={36} height={36} style={{ objectFit: 'contain' }} />
