@@ -413,6 +413,9 @@ export default function SmartLeasePage() {
                 <Link href="/host" className="btn btn-outline-light btn-lg">
                   Try HOST Demos
                 </Link>
+                <Link href="/host/examples" className="btn btn-outline-light btn-lg">
+                  Read HOST Examples
+                </Link>
               </div>
             </div>
           </div>

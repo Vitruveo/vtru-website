@@ -500,6 +500,9 @@ authTag         - 16-byte GCM authentication tag`}</pre>
             <Link href="/host" className="btn btn-primary btn-lg">
               Try HOST Demos
             </Link>
+            <Link href="/host/examples" className="btn btn-outline-light btn-lg">
+              Read HOST Examples
+            </Link>
             <Link href="/developers/psc" className="btn btn-outline-light btn-lg">
               All Protocol Contracts
             </Link>

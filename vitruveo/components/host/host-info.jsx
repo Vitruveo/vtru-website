@@ -175,13 +175,16 @@ authTag         - 16-byte GCM authentication tag`}</pre>
         </div>
       </section>
 
-      {/* Primer CTA again at bottom */}
-      <div className="text-center">
+      {/* CTA buttons at bottom */}
+      <div className="d-flex justify-content-center gap-3 flex-wrap">
         <Link href="/host-primer" className="btn btn-host-primer btn-lg">
           <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" className="me-2">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>
-          Read the HOST Primer
+          HOST Primer
+        </Link>
+        <Link href="/host/examples" className="btn btn-outline-light btn-lg">
+          Read HOST Examples
         </Link>
       </div>
     </div>
