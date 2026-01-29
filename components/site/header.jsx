@@ -40,7 +40,7 @@ export function SiteHeader() {
               <Link href="/developers" className="nav-link" onClick={closeMenu}>Developers</Link>
             </li>
             <li className="nav-item">
-              <Link href="/host" className="nav-link" onClick={closeMenu}>HOST Demos</Link>
+              <Link href="/host" className="nav-link" onClick={closeMenu}>HOST</Link>
             </li>
             <li className="nav-item">
               <Link href="/chat" className="nav-link" onClick={closeMenu}>AI Chat</Link>

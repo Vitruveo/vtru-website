@@ -17,11 +17,17 @@ function HostLayoutInner({ children }) {
   // Check if we're on the landing page or a demo page
   const isLandingPage = pathname === '/host';
   const isRequestPage = pathname === '/host/request';
+  const isExamplePage = pathname.startsWith('/host/examples');
   const currentDemo = !isLandingPage && !isRequestPage ? pathname.split('/').pop() : null;
 
   const getTitle = () => {
-    if (isLandingPage) return 'HOST Demos';
+    if (isLandingPage) return 'HOST (HTTP Outbound Service Trigger)';
     if (isRequestPage) return 'HOST Request Generator';
+    if (pathname.startsWith('/host/examples/')) {
+      const example = pathname.split('/').pop();
+      return `HOST Example: ${example?.charAt(0).toUpperCase()}${example?.slice(1)}`;
+    }
+    if (pathname === '/host/examples') return 'HOST Examples';
     return `HOST Demo: ${currentDemo?.charAt(0).toUpperCase()}${currentDemo?.slice(1)}`;
   };
 
@@ -52,32 +58,34 @@ function HostLayoutInner({ children }) {
             )}
             <h5 className="host-title mb-0">{getTitle()}</h5>
           </div>
-          <div className="d-flex align-items-center gap-3">
-            {!isRequestPage && (
-              <Link
-                href="/host/request"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '6px',
-                  background: 'rgba(161, 255, 117, 0.1)',
-                  border: '1px solid rgba(161, 255, 117, 0.3)',
-                  color: '#a1ff75',
-                  fontSize: '0.875rem',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                }}
-              >
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                Request Generator
-              </Link>
-            )}
-            <HostConnectButton />
-          </div>
+          {!isExamplePage && (
+            <div className="d-flex align-items-center gap-3">
+              {!isRequestPage && (
+                <Link
+                  href="/host/request"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '6px',
+                    background: 'rgba(161, 255, 117, 0.1)',
+                    border: '1px solid rgba(161, 255, 117, 0.3)',
+                    color: '#a1ff75',
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    textDecoration: 'none',
+                  }}
+                >
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                  Request Generator
+                </Link>
+              )}
+              <HostConnectButton />
+            </div>
+          )}
         </div>
       </div>
       <div className="host-content">

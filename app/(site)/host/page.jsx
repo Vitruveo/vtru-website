@@ -115,6 +115,33 @@ export default function HostLandingPage() {
             </div>
           ))}
         </div>
+
+        {/* Use-case Examples Section */}
+        <div className="mt-5 pt-5 border-top border-secondary">
+          <h2 className="text-white text-center mb-4">HOST Use-case Examples</h2>
+          <p className="text-muted-light text-center mb-5 mx-auto" style={{ maxWidth: '600px' }}>
+            Real-world applications that demonstrate the transformative power of HOST.
+          </p>
+          <div className="row g-4 justify-content-center">
+            <div className="col-sm-6 col-lg-4">
+              <Link href="/host/examples/smartlease" className="text-decoration-none">
+                <div className="demo-card">
+                  <h4 className="demo-card-title">SmartLease</h4>
+                  <div className="demo-card-icon" style={{ color: '#f59e0b' }}>
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </div>
+                  <p className="demo-card-description">Self-enforcing asset financing. When payment stops, the machine stops. The holy grail of RWA financing.</p>
+                  <div className="demo-card-button" style={{ backgroundColor: '#f59e0b' }}>
+                    Read More
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
 
       <style jsx>{`
