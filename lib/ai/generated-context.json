@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-28T21:51:59.839Z",
+  "generatedAt": "2026-01-29T00:39:14.767Z",
   "pages": [
     {
       "path": "/",
@@ -65,6 +65,16 @@
       "path": "/host/beta",
       "title": "Webhook Notification - HOST Example",
       "description": "Send real-time notifications to external services when contract events occur."
+    },
+    {
+      "path": "/host/examples",
+      "title": "HOST Real-World Examples",
+      "description": "Explore real-world applications of HOST Protocol. See how smart contracts control physical infrastructure, trigger AI agents, and automate business processes."
+    },
+    {
+      "path": "/host/examples/smartlease",
+      "title": "SmartLease: Self-Enforcing Assets - HOST Example",
+      "description": "How HOST enables pay-as-you-go industrial machinery financing. Smart contracts that control physical assets."
     },
     {
       "path": "/host/request",
