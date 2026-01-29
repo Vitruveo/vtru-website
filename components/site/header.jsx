@@ -48,6 +48,9 @@ export function SiteHeader() {
             <li className="nav-item">
               <Link href="/overview" className="nav-link" onClick={closeMenu}>Overview</Link>
             </li>
+            <li className="nav-item">
+              <Link href="/whats-new" className="nav-link" onClick={closeMenu}>{"What's New"}</Link>
+            </li>
             <li className="nav-item ms-lg-3">
               <a
                 href="https://explorer.vitruveo.ai"
