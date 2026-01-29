@@ -123,6 +123,7 @@ export default function HostLandingPage() {
             Real-world applications that demonstrate the transformative power of HOST.
           </p>
           <div className="row g-4 justify-content-center">
+            {/* SmartLease */}
             <div className="col-sm-6 col-lg-4">
               <Link href="/host/examples/smartlease" className="text-decoration-none">
                 <div className="demo-card">
@@ -135,6 +136,96 @@ export default function HostLandingPage() {
                   </div>
                   <p className="demo-card-description">Self-enforcing asset financing. When payment stops, the machine stops. The holy grail of RWA financing.</p>
                   <div className="demo-card-button" style={{ backgroundColor: '#f59e0b' }}>
+                    Read More
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Access Control */}
+            <div className="col-sm-6 col-lg-4">
+              <Link href="/host/examples/access-control" className="text-decoration-none">
+                <div className="demo-card">
+                  <h4 className="demo-card-title">Access Control</h4>
+                  <div className="demo-card-icon" style={{ color: '#8b5cf6' }}>
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                    </svg>
+                  </div>
+                  <p className="demo-card-description">NFT-gated physical spaces. Hold the token, open the door. Sell the token, lose access instantly.</p>
+                  <div className="demo-card-button" style={{ backgroundColor: '#8b5cf6' }}>
+                    Read More
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Supply Chain */}
+            <div className="col-sm-6 col-lg-4">
+              <Link href="/host/examples/supply-chain" className="text-decoration-none">
+                <div className="demo-card">
+                  <h4 className="demo-card-title">Supply Chain</h4>
+                  <div className="demo-card-icon" style={{ color: '#06b6d4' }}>
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                  </div>
+                  <p className="demo-card-description">Authenticated IoT sensor data. Tamper-proof provenance from factory to consumer.</p>
+                  <div className="demo-card-button" style={{ backgroundColor: '#06b6d4' }}>
+                    Read More
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* SmartEscrow */}
+            <div className="col-sm-6 col-lg-4">
+              <Link href="/host/examples/smart-escrow" className="text-decoration-none">
+                <div className="demo-card">
+                  <h4 className="demo-card-title">SmartEscrow</h4>
+                  <div className="demo-card-icon" style={{ color: '#3b82f6' }}>
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <p className="demo-card-description">Atomic real estate closings. Payment, document release, and title recording in one transaction.</p>
+                  <div className="demo-card-button" style={{ backgroundColor: '#3b82f6' }}>
+                    Read More
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* AutoLien */}
+            <div className="col-sm-6 col-lg-4">
+              <Link href="/host/examples/auto-lien" className="text-decoration-none">
+                <div className="demo-card">
+                  <h4 className="demo-card-title">AutoLien</h4>
+                  <div className="demo-card-icon" style={{ color: '#ef4444' }}>
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <p className="demo-card-description">Self-filing debt. Missed DeFi payments trigger automatic UCC lien filings.</p>
+                  <div className="demo-card-button" style={{ backgroundColor: '#ef4444' }}>
+                    Read More
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Credit Bridge */}
+            <div className="col-sm-6 col-lg-4">
+              <Link href="/host/examples/credit-bridge" className="text-decoration-none">
+                <div className="demo-card">
+                  <h4 className="demo-card-title">Credit Bridge</h4>
+                  <div className="demo-card-icon" style={{ color: '#10b981' }}>
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <p className="demo-card-description">DeFi builds credit. On-chain loan payments reported to traditional credit bureaus.</p>
+                  <div className="demo-card-button" style={{ backgroundColor: '#10b981' }}>
                     Read More
                   </div>
                 </div>
