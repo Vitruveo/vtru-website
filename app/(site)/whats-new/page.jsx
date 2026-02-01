@@ -7,6 +7,14 @@ export const metadata = {
 
 const UPDATES = [
   {
+    date: 'Jan. 31, 2026',
+    headline: 'New Vertical Foundation website',
+    link: 'https://www.verticalfnd.com',
+    items: [
+      'The Vertical Foundation website has been updated with the vision and plan for the foundation.',
+    ],
+  },
+  {
     date: 'Jan. 28, 2026',
     headline: 'HOST use-case examples added',
     link: '/host/examples',
